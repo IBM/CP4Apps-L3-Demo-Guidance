@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploy-java-app-to-ocp" class="md-skip">
+        <a href="#liberty-dev-mode" class="md-skip">
           Skip to content
         </a>
       
@@ -360,6 +360,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Liberty Dev Mode/02 Demo Guide.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -413,54 +434,54 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-access-transformation-advisor" class="md-nav__link">
+  <a href="#2-1-create-a-liberty-web-application" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Access Transformation Advisor
+      2 1. Create a Liberty web application
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-download-transformation-advisor-migration-plan" class="md-nav__link">
+  <a href="#3-update-the-whereami-application" class="md-nav__link">
     <span class="md-ellipsis">
-      3 Download Transformation Advisor migration plan
+      3 Update the whereami application
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-review-the-updated-transformation-advisor-migration-bundle" class="md-nav__link">
+  <a href="#4-start-liberty-dev-mod" class="md-nav__link">
     <span class="md-ellipsis">
-      4 Review the updated Transformation Advisor migration bundle
+      4 Start Liberty Dev Mod
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-create-docker-container-image" class="md-nav__link">
+  <a href="#5-update-liberty-server-configuration-with-liberty-code-assistant" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Create Docker container image
+      5 Update Liberty server configuration with Liberty Code Assistant
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+  <a href="#6-modify-application-code-with-liberty-code-assistant" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Deploy to OpenShift environment
+      6 Modify application code with Liberty Code Assistant
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-review-the-deployment-configuration-and-use-the-license-service" class="md-nav__link">
+  <a href="#7-conduct-a-unit-test-in-liberty-dev-mode" class="md-nav__link">
     <span class="md-ellipsis">
-      7 Review the deployment configuration and use the License service
+      7 Conduct a unit test in Liberty dev mode
     </span>
   </a>
   
@@ -495,393 +516,323 @@
                   
 
 
-<div><h1 id="deploy-java-app-to-ocp">Deploy Java App to OCP</h1>
+<div><h1 id="liberty-dev-mode">Liberty Dev Mode</h1>
 <h2 id="hands-on-demo-guide">Hands-on demo guide</h2>
 <h3 id="1-introduction">1    Introduction</h3>
-<p>This demo provides fundamental hands-on experience with modernizing existing Java applications to WebSphere Liberty, deployed into a container platform, such as Red Hat OpenShift.</p>
-<p>The focus of this demo is on the practical aspects of how to use the deployment artifacts created by Transformation Advisor to speed up the process to deploy a Java app to Liberty running on OpenShift to achieve the objective for operation modernization.</p>
+<p>In this demo, you will show how developers can use Open Liberty in dev mode for achieving an efficient iterative develop, test, and debug cycle when developing Java based applications / microservices. Liberty dev mode works with WebSphere Liberty.  </p>
+<p>At the end of this demo, you should be able to showcase how to: 
+* use Liberty dev mode with an Integrated Development Environment (IDE) 
+* use Liberty Code Assistant to change configurations of a Liberty server
+* use Liberty Code Assistant to update Java application code
+* run integrated unit tests from Liberty dev mode</p>
 <p><strong>Open Liberty</strong> is an application server designed for the cloud. It’s small, lightweight, and designed with modern cloud-native application development in mind. </p>
 <p>Open Liberty supports the full MicroProfile and Jakarta EE APIs and is composable, meaning that you can use only the features that you need, keeping the server lightweight, which is great for microservices. It also deploys to every major cloud platform, including Docker, Kubernetes, and Cloud Foundry.</p>
-<p><strong>Operational Modernization</strong> gives an operations team the opportunity to embrace modern operations best practices without putting change requirements on the development team.</p>
-<p>The scaling, routing, clustering, high availability, and continuous availability functionality that were previously provided by the application server middleware, can be provided by the container platform.</p>
-<p>This allows the operations team to run cloud-native and modernized applications in the same environment with the same standardized logging, monitoring, and security frameworks.</p>
-<p>The operation modernization solution provided by IBM Cloud Pak for Application is to move existing Java applications to Liberty containers.</p>
-<p><strong>IBM Cloud Transformation Advisor</strong> (TA) is an application modernization tool that is entitled through IBM Cloud Pak for Applications. Transformation Advisor helps you quickly evaluate on-premises Java EE applications for deployment to the cloud.</p>
-<p>The Transformation Advisor tool provides the following value:</p>
-<ul>
-<li>Identifies the Java EE programming models in the app</li>
-<li>Determines the complexity of replatforming these apps by listing a high-level inventory of the content and structure of each app</li>
-<li>Highlights Java EE programming model and WebSphere API differences between the WebSphere runtime profile types</li>
-<li>Identifies Java EE specification implementation differences that might affect the app</li>
-<li>Generates accelerators for deploying the application to Liberty and containers in a target environment</li>
-</ul>
-<p>Additionally, the tool provides a recommendation for the right-fit IBM WebSphere Application Server edition and offers advice, best practices, and potential solutions to assess the ease of moving apps to Liberty or newer versions of WebSphere traditional. It automatically generates a migration bundle with the artifacts you will need to containerize your application running on Liberty and deploy it to OpenShift Cloud Platform, accelerating application migrating to cloud process, minimizing errors and risks and reducing time to market.</p>
-<p><strong>Operator</strong> is the Kubernetes operator and specifically the Liberty operator. Liberty operator is used in the demo to deploy the app running on Liberty to the OpenShift Container Platform (OCP). The value of operators, in general, is that it really simplifies the amount of configuration required to do a deployment via all the YAML files that are typically required in Kubernetes. Additional benefits specifically to the Liberty operator is that it offers the automation of common tasks, like deploying, scaling, getting dumps, including thread dumps, core dumps and heap dumps, and gathering app logs. Another key benefit of the operator is that it provides out-of-the-box security capability, including certificate management integration with OCP and single sign-on delegation.</p>
-<p><strong>Kubernetes Kustomize</strong> is a tool that is native to Kubernetes that is available for customizing Kubernetes configuration. The idea is that the base configuration can be reused for deployments across different environments like development, staging, and production. The changes and modifications for different environments are provided as the adjustment snippets for the base configuration override. In this demo the deployment YAML file created by Transformation Advisor uses the Kustomize tool.</p>
-<p><strong>Mod Resorts</strong> app is a WebSphere application showing the weather in various locations. This app is initially developed for WebSphere traditional.  In the demo it will be moved to Liberty in a container and deployed to OCP.</p>
-<p><img alt="" src="_attachments/image030.png"></p>
-<p><strong>Demo Commands File</strong> lists all the commands used to setup and run the demo, so you can open it in a text editor and directly copy/paste the commands during the demo without going through the noVNC control pane. This file is provided to simplify the demo process. The file name is <strong>demo-setup-plus-commands.txt</strong> and it is in the <strong>/home/techzone/appmod-pot-labfiles/demo</strong> directory. </p>
-<p><img alt="" src="_attachments/image031.png"></p>
-<p>The commands used for this demo start from line 71 of the file.</p>
-<p><img alt="" src="_attachments/image032.png"></p>
-<p>In this demo, we are going to showcase how to rapidly deploy and configure the Mod Resorts app in Liberty running on an OpenShift Container Platform (OCP). We will show how easy it is to use IBM Transformation Advisors migration artifacts to accelerate the steps of the modernization journey, including build, configuration, and deployment. It will demonstrate that how quickly clients can realize the values from WebSphere Liberty and OCP, which provide greater deployment flexibility and operational efficiencies across the enterprise. We are also going to show how to config and use IBM License Service in OCP.</p>
-<p>The objectives of this demo are to:</p>
-<ul>
-<li>Learn how to use the Transformation Advisor migration bundle to build the application into a container image</li>
-<li>Learn the role of Kustomize when deploying the migration bundle</li>
-<li>Learn how to deploy the app to OpenShift with a single command</li>
-<li>Review the deployment configuration and learn how to configure and use the IBM License Service tracking in OCP</li>
-</ul>
-<h3 id="2-access-transformation-advisor">2    Access Transformation Advisor</h3>
+<p><strong>Maven</strong> is an automation build tool that provides an efficient way to develop Java applications. </p>
+<p>Liberty <strong>development mode</strong>, or <strong>dev mode</strong>, allows developers to develop applications with any text editor or IDE by providing hot reload and deployment, on-demand testing, and debugger support. Liberty dev mode is enabled through Maven and Gradle projects. </p>
+<p>With Liberty <strong>dev mode</strong>, the application code is automatically compiled and deployed to the running server, making it easy to iterate on the code changes. </p>
+<p>Developers can run tests on-demand or even automatically so that you can get immediate feedback on their changes. They can also attach a debugger at any time to debug their running application.</p>
+<p><img alt="" src="../_attachments/image020.png"></p>
+<p><strong>Visual Studio Code</strong>  (<strong>VS Code</strong>) is a code editor redefined and optimized for building and debugging modern web and cloud applications. VS Code is the IDE used in this Demo environment.</p>
+<p>This demo has the following steps:
+1.  Create a Liberty web application
+2.  Update the Liberty web application
+3.  Run Liberty dev mode using integrated development environment
+4.  Update Liberty server configuration with Liberty Code Assistant
+5.  Modify application code with Liberty Code Assistant
+6.  Conduct a unit test in Liberty dev mode
+7.  Summary</p>
+<h3 id="2-1-create-a-liberty-web-application">2    1.  Create a Liberty web application</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Talking Points
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>To get started in the demo, I will go to IBM Transformation Advisor User Interface to look at the WebSphere applications Transformation Advisor analyzed 
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>The objective of this step is to develop a simple web application for Liberty. I will use a Liberty starter application to start from scratch and use VS Code and Liberty Tools to build the application. I will create a Jakarta EE 10 Web application with the name whereamI and will use maven to build it. 
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>At the beginning of this demo, I have already gotten the Transformation Advisor Data Collector run on the WebSphere Application Server and gotten the analysis data loaded into the Transformation Advisor User Interface. 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>The fastest way to get started with Liberty is to use an Open Liberty starter application which generates a project with the maven configuration as well as a basic Liberty setup.
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Now let me go to Transformation Advisor User Interface to take a look at these applications. I will focus on the simple WebSphere applications Transformation Advisor identified. A simple application is the app that Transformation Advisor has assessed and indicated that no code changes are required for the app to run on Liberty. 
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>The Open Liberty starter gives us a simple, quick way to get the necessary files to start building an application on Open Liberty. There is no need to search how to find out what to add to my maven or gradle build files. A simple RestApplication.java file is generated for us to start creating a REST-based application. A server.xml configuration file is provided with the necessary features for the MicroProfile and Jakarta EE versions that I selected.
 </code></pre></div>
 <ol>
 <li>
-<p>If the Transformation Advisor is not started yet, start it by running the command below in a terminal window. Otherwise skip this step.</p>
-<div class="highlight"><pre><span></span><code>cd /home/techzone/transformation-advisor-local-3.8.1
+<p>Open a browser window by clicking on <strong>Activities</strong> (<strong>A</strong>) and then select the <strong>Firefox browser</strong> (<strong>B</strong>) icon.</p>
+<p><img alt="" src="../_attachments/image021.png"></p>
+</li>
+<li>
+<p>Enter the URL https://openliberty.io/start/.
+    The Open Liberty Starter page is displayed.</p>
+<p><img alt="" src="../_attachments/image022.png"> </p>
+</li>
+<li>
+<p>Change the artifact name to <strong>whereami</strong> (<strong>A</strong>), change the Java level to <strong>17</strong> (<strong>B</strong>) and leave the rest as is, then click <strong>Generate project</strong> (<strong>C</strong>).</p>
+<p><img alt="" src="../_attachments/image023.png"></p>
+</li>
+<li>
+<p>Click on <strong>Save</strong> (<strong>A</strong>) to save the project under the <strong>Downloads</strong> directory of the demo VM.</p>
+<p><img alt="" src="../_attachments/image024.png"></p>
+<p>You will see a pop-up like the one below. Click <strong>Got it!</strong> (<strong>A</strong>) to close the window.</p>
+<p><img alt="" src="../_attachments/image025.png"></p>
+</li>
+<li>
+<p>Click <strong>Activities</strong> (<strong>A</strong>) and switch to the <strong>terminal window</strong> (<strong>B</strong>). </p>
+<p><img alt="" src="../_attachments/image026.png"> </p>
+</li>
+<li>
+<p>From the terminal window, extract the project zip file to the working directory with the following commands.</p>
+<div class="highlight"><pre><span></span><code>mkdir ~/Student
 
-./launchTransformationAdvisor.sh
+unzip ~/Downloads/whereami.zip -d ~/Student/whereami
 </code></pre></div>
+<p>The project is extracted to the <strong>~/Student/whereami</strong> directory.</p>
 </li>
 <li>
-<p>Type 5 and press Enter (A) to start the Transformation Advisor.</p>
-<p><img alt="" src="_attachments/image016.png"> </p>
-<p>The Transformation Advisor is started after a few minutes.</p>
-<p><img alt="" src="_attachments/image017.png"> </p>
-<p><strong>Note</strong>: you might see an error message when launching the Transformation Advisor, just ignore it, because it will not impact the start of Transformation Advisor.</p>
+<p>Inspect the whereami project artifacts and sour code files created by Open Liberty Starter Application using the command:</p>
+<div class="highlight"><pre><span></span><code>ls -l ~/Student/whereami
+</code></pre></div>
+<p>The whereami project artifacts and sour code files are listed.</p>
+<p><img alt="" src="../_attachments/image027.png"></p>
+<p>As you can see, the Open Liberty Starter Application creates the project structure and basic artifacts needed for the project. If you want to do development in docker or containers, it has the Dockerfile ready. It also contains the pom file because you selected a maven project in the Starter Application. </p>
 </li>
 <li>
-<p>Access Transformation Advisor page from a web browser by clicking the Transformation Advisor (A) bookmark in the browser.</p>
-<p><img alt="" src="_attachments/image019.png"> </p>
-<p>The Transformation Advisor page is displayed.</p>
-<p><img alt="" src="_attachments/image033.png"> </p>
+<p>View the contents of the pom.xml file with the command:</p>
+<div class="highlight"><pre><span></span><code>cat ~/Student/whereami/pom.xml
+</code></pre></div>
+<p><img alt="" src="../_attachments/image028.png"></p>
+<p>You see that the pom file has the basic structure of a Java application configuration with maven and it is using MicroProfile and open liberty tools as the starter which allows you to build the application.</p>
 </li>
 <li>
-<p>Click the <strong>Evaluation workspace</strong> (<strong>A</strong>) to open it.</p>
-<p><img alt="" src="_attachments/image034.png"> </p>
-<p>The Evaluation workspace is displayed.</p>
-<p><img alt="" src="_attachments/image035.png"> </p>
-<p>Notice that only <strong>WebSphere Liberty</strong> is selected as <strong>Migration target</strong> which is the platform we want to move the Mod Resorts app to.</p>
+<p>View the contents of the Liberty server.xml file with the command:</p>
+<div class="highlight"><pre><span></span><code>cat ~/Student/whereami/src/main/liberty/config/server.xml
+</code></pre></div>
+<p><img alt="" src="../_attachments/image029.png"></p>
+<p>In the application source what you are seeing is that it is a very simple configuration for the liberty server which is basically pulling in the <strong>Jakarta E10</strong> and the <strong>MicroProfile 6</strong> features that you defined in that starter kit.</p>
+<p>Ideally you would list up a fewer of the sub features instead of those convenience features but that's a good way to get started.</p>
+</li>
+<li>
+<p>View the contents of the <strong>RestApplication.java</strong> file with the command:</p>
+<div class="highlight"><pre><span></span><code>cat ~/Student/whereami/src/main/java/com/demo/rest/RestApplication.java
+</code></pre></div>
+<p><img alt="" src="../_attachments/image030.png"></p>
+<p>As you can see that the Starter Application creates the starter set for a rest application that you can start developing with. The next step is to add application functions and business logic to the project.</p>
 </li>
 </ol>
-<h3 id="3-download-transformation-advisor-migration-plan">3    Download Transformation Advisor migration plan</h3>
+<h3 id="3-update-the-whereami-application">3    Update the whereami application</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Talking Points
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Now I am in Transformation Advisor and as one can see there are five applications assessed. 
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>We have other demonstrations that showcase how to do an application assessment and how to interpret the results, but in this demo, I am going to focus primarily on the migration plan and what it is going to take to move an application from the WebSphere traditional to WebSphere Liberty running on a container platform.
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>I want to focus on moving a simple application from WebSphere traditional to Liberty without any code change. As you can see, five applications have been assessed and four of these have been classified as simple, meaning no code change is required to move them to Liberty. I will choose the Mod Resort application that I have staged and set up for the demo.
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>First, I will take a look at the Transformation Advisor migration plan which contains the artifacts that have been generated by Transformation Advisor as a result of scanning the application and the configuration in WebSphere Application Server (WAS). By doing so, I can understand the Liberty server configuration, the build file to build the container image as well as the YAML artifacts to deploy into a Kubernetes and OCP which are created by Transformation advisor. 
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>In this task, I need to simply download the migration plan to my local workstation.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>In this step, I am going add application functions and business logic to the whereami application. To save time, I am going using the pre-built application code I get from my GitHub repo. The pre-built application code includes the following:
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>1. there are some minor changes to the Liberty server.xml file.
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>2. a servlet class for whereami application, WhereAmI.java, has been created.
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>3. a class for the unit test is added.
 </code></pre></div>
 <ol>
 <li>
-<p>Scroll down to locate the <strong>Mod Resort application</strong> (<strong>A</strong>) in Transformation Advisor and click <strong>Migration plan</strong> (<strong>B</strong>).</p>
-<p><img alt="" src="_attachments/image036.png"> </p>
+<p>Replace the <strong>whereami</strong> application code in the <strong>Student</strong> directory with the pre-built code from the GitHub repo with command:</p>
+<div class="highlight"><pre><span></span><code>cp -rf /home/techzone/Liberty-getting-started-lab-files/demoFiles/whereami/ ~/Student/
+</code></pre></div>
 </li>
 <li>
-<p>The Migration plan page is displayed, click <strong>Download</strong> (<strong>A</strong>).</p>
-<p><img alt="" src="_attachments/image037.png"> </p>
-<p>The Migration plan package named <strong>modresorts10war.ear_migrationBundle.zip</strong> is now downloaded to the <strong>Downloads</strong> directory of the demo VM. It contains the Liberty server configuration (<strong>server.xml</strong>), the build file (<strong>Containerfile</strong>) to build the container image as well as the YAML artifacts to deploy into a Kubernetes or OCP environment.</p>
-<p><img alt="" src="_attachments/image038.png"></p>
-<p><strong>Note</strong>: The Transformation Advisor Migration plan package is also called the Transformation Advisor migration bundle.</p>
+<p>Inspect the updated whereami project artifacts and sour code files using commands:</p>
+<div class="highlight"><pre><span></span><code>ls -l ~/Student/whereami
+</code></pre></div>
+<p>The updated whereami project artifacts and sour code files are listed.</p>
+<p><img alt="" src="../_attachments/image031.png"></p>
+</li>
+<li>
+<p>Check and test whereami application in VS Code with commands:</p>
+<div class="highlight"><pre><span></span><code>cd ~/Student/whereami
+
+code .
+</code></pre></div>
+<p>The VS Code UI is opened.</p>
+</li>
+<li>
+<p>Click <strong>Yes, I trust the authors ** (</strong>A**) to continue.</p>
+<p><img alt="" src="../_attachments/image032.png"></p>
+<p>If you see during the lab one of the pop-ups below or any other pop-up asking to install something, close the pop-up without installation by clicking the <strong>X</strong> (<strong>A</strong>). </p>
+<p><img alt="" src="../_attachments/image033.png"></p>
+<p>When the project is loaded, you can see that you added the <strong>WhereAmI.java</strong> file as well as a unit test in the project.</p>
+<p><img alt="" src="../_attachments/image034.png"></p>
+<p>You also configured the Liberty server with all features needed for the application.</p>
 </li>
 </ol>
-<h3 id="4-review-the-updated-transformation-advisor-migration-bundle">4    Review the updated Transformation Advisor migration bundle</h3>
+<h3 id="4-start-liberty-dev-mod">4    Start Liberty Dev Mod</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Talking Points
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>The Mod Resorts app Migration bundle gets downloaded into the Downloads directory of the local file system from Transformation Advisor. 
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>In order to deploy the application to Liberty on OpenShift, I need to make a few changes to the bundle, including changing server configuration settings, adding app war file and update image file name and other settings in the deployment YAML file. To keep the demo simple, I will use a prepared migration bundle where I already applied the required changes. The prepared migration bundle package is in the modresorts10war.ear_migrationBundle-demo_ready directory.
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>I will take a quick look at what are in the migration bundle:
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>1. The bundle includes a file named Containerfile to build the container image with the app deployed on Liberty. 
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>2. I placed the war file of the Mod Resorts app into the target directory. Since no code changes are required, I do not need to rebuild the application and just copied the war file that WAS used. 
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>3. The source directory in the bundle includes the liberty server configuration file, server.xml, which is created by Transformation Advisor. It includes the server configuration for Mod Resorts to run in Liberty and a few minor modifications I made.
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>4. The last piece I want to look at is the deployment artifacts in the deploy directory of the migration bundle. These are the YAML files that Transformation Advisor created to deploy the app to a Kubernetes environment using the standard Kubernetes resources or the Liberty operator. In this demo, I am using the Liberty Operator and the Kustomize tool to deploy the app to OCP. 
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>Basically, I have the customization files for deploying the Mod Resorts app to Liberty container running on OCP and I will use these customized migration bundle files that Transformation Advisor generated.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Liberty development mode, or dev mode, allows us to develop applications with any text editor or IDE by providing hot reload and deployment, on demand testing, and debugger support. Liberty Dev Mode is enabled through Maven and Gradle projects.
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>My code is automatically compiled and deployed to my running server, making it easy to iterate on my changes.
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>I can run tests on demand or even automatically so that I can get immediate feedback on my changes. I can also attach a debugger at any time to debug my running application.
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>I can use the capabilities of Liberty dev mode inside and outside of an IDE. This provides with me the flexibility of choice. In a terminal window, I could use Liberty in dev mode with maven using the command mvn liberty:dev or mvn liberty:devc if I want to develop in a container.
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>In the demo environment, the Liberty tools plugin has been installed into VS Code. Therefore I will use the integrated Liberty dashboard instead. 
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>I will show how to run Liberty dev mode in VS Code and how to use the Open Liberty Tools in VS Code to work with my server configuration, application code and run integrated unit tests on demand, so that I can get immediate feedback on my changes.
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>In the VS Code environment, I will right-click project under LIBERTY DASHBOARD and select start.  This will start Liberty in dev mode and we will see the following message in the VS Code terminal window: Web application available (default_host): http://localhost:9080/wherami/. I can now access the application URL in the browser window to verify that the application is running.
 </code></pre></div>
 <ol>
 <li>
-<p>From the File manager window, click the <strong>modresorts10war.ear_migrationBundle-demo_ready</strong> (<strong>A</strong>) folder under the <strong>/home/techzone/Downloads </strong>directory to access it.</p>
-<p><img alt="" src="_attachments/image039.png"></p>
+<p>To start Liberty in Dev Mode right-click <strong>whereami</strong> (<strong>A</strong>)under <strong>LIBERTY DASHBOARD</strong> and select <strong>Start</strong> (<strong>B</strong>). </p>
+<p><img alt="" src="../_attachments/image035.png"></p>
+<p>In a few seconds, the Liberty server will be up and running, and you can see that the whereami application is ready.</p>
+<p><img alt="" src="../_attachments/image036.png"></p>
 </li>
 <li>
-<p>Review the contents in the directory. The migration bundle has all artifacts that we need to deploy the app to Liberty in container and to a Kubernetes environment. The <strong>Containerfile</strong> is the one to be used to create the Docker image.</p>
-<p><img alt="" src="_attachments/image040.png"></p>
-</li>
-<li>
-<p>Click <strong>target</strong> (<strong>A</strong>) folder to access it.</p>
-<p><img alt="" src="_attachments/image041.png"></p>
-<p>This directory contains the original app war file because there are no code changes needed to move it from WebSphere traditional to Liberty.</p>
-<p><img alt="" src="_attachments/image042.png"></p>
-</li>
-<li>
-<p>Click the <strong>src</strong> (<strong>A</strong>) folder and go to the <strong>main&gt;liberty&gt;config</strong> directory.</p>
-<p><img alt="" src="_attachments/image043.png"></p>
-<p>We see the Liberty configuration file, <strong>server.xml</strong>, which includes the server configuration for Mod Resorts to run in Liberty and a few minor modifications.</p>
-<p><img alt="" src="_attachments/image044.png"></p>
-</li>
-<li>
-<p>Click the <strong>deploy</strong> (<strong>A</strong>) folder to open it</p>
-<p><img alt="" src="_attachments/image045.png"></p>
-<p>We see two folders, <strong>k8s</strong> and <strong>kustomize</strong>, which contain the YAML files that Transformation Advisor created to deploy the app to a Kubernetes environment. While the <strong>k8s</strong> folder is used for deployments using the standard Kubernetes resources, <strong>kustomize</strong> is used for deployments using the Liberty operator.</p>
-<p><img alt="" src="_attachments/image046.png"></p>
-</li>
-<li>
-<p>Click the <strong>kustomize</strong> (<strong>A</strong>) folder and go to the <strong>base</strong> directory.</p>
-<p><img alt="" src="_attachments/image047.png"></p>
-<p>The <strong>base</strong> folder contains the YAML files used to deploy the app to a Liberty container running on OCP using Liberty operator.</p>
-<p><img alt="" src="_attachments/image048.png"></p>
+<p>To access the whereami application, open a web browser and enter the application URL as: http://localhost:9080/whereami/.</p>
+<p>The application page is displayed.</p>
+<p><img alt="" src="../_attachments/image037.png"></p>
+<p>It lists the information about Liberty version used, the host name, scheme, context path and port.</p>
 </li>
 </ol>
-<h3 id="5-create-docker-container-image">5    Create Docker container image</h3>
+<h3 id="5-update-liberty-server-configuration-with-liberty-code-assistant">5    Update Liberty server configuration with Liberty Code Assistant</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Talking Points
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>To deploy the Mod Resorts app in Liberty on container, I need to build a container image for the app first. In this task, I am going to leverage the updated migration bundle artifices, and create a Docker container for the Mod Resorts app. I will show how easy it is to deploy the app in a local Docker container using the migration bundle artifices from Transformation Advisor.
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Now I am going to make changes to the Liberty server configuration and enable the server https port and I am going to use Liberty code assistant to speed up the server configuration process.
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>The first thing I am going to do is to go to the migration bundle directory structure and run the command to build the Docker image. The command will take the Containerfile that Transformation Advisor created and it is going to build the container image for the Mod Resorts app running on Liberty. 
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>In order to active the https port of the Liberty server, I need to add the transport security feature to the Liberty server and I can do it with Liberty code assistant.
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>After the image is created, I will verify it by starting a Docker container with docker run command. I will verify that the container is running and show I can access the Mod Resorts app running on Liberty in a local Docker container.
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Once the image is created and verified, it is ready to be deployed to OCP in the next task.
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>I will demonstrate that I can update Liberty server configuration using Liberty code assistant and activate the https protocol without stopping or restarting the Liberty server.
 </code></pre></div>
 <ol>
 <li>
-<p>From a terminal window, go to migration bundle directory with command:</p>
-<div class="highlight"><pre><span></span><code>cd /home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready
-</code></pre></div>
+<p>In the VS Code environment, click to open the Liberty server configuration file <strong>server.xml</strong> (<strong>A</strong>) under the <strong>target/liberty/wlp/usr/server/defaultServer</strong> folder.</p>
+<p><img alt="" src="../_attachments/image038.png"></p>
+<p>You can see that the https port is set as 9443.</p>
 </li>
 <li>
-<p>Build Docker image with command:</p>
-<div class="highlight"><pre><span></span><code>docker build -f ./Containerfile --tag default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009 .
-</code></pre></div>
-<p>The Docker image is built.</p>
-<p><img alt="" src="_attachments/image049.png"> </p>
-<p><strong>Note</strong>: The first time to build the Docker image, it will take a longer time because it needs to download all the artifacts to the local demo VM. After that, each build will only pull down the updated artifacts, so the process will be much fast. Therefore, it is recommended to run the command to build the image first before doing the client facing demo to save time.</p>
+<p>If you try to access the application from the browser window using the https port as: <strong>https://localhost:9443/whereami/</strong> (<strong>A</strong>), you will get the Unable to connect error because although the https port value is defined, the https port is not activated on the Liberty server yet.</p>
+<p><img alt="" src="../_attachments/image039.png"></p>
 </li>
 <li>
-<p>To verify the Docker image, run the command below:</p>
-<div class="highlight"><pre><span></span><code>docker images | grep resorts
-</code></pre></div>
-<p>We can see that the Docker image is created.</p>
-<p><img alt="" src="_attachments/image050.png"> </p>
+<p>Back to VS Code, add a new line after <strong><feature>servlet-6.0</feature></strong> (<strong>A</strong>) in the <strong>server.xml</strong> file, and activate the Liberty code assistant by pressing <strong>CTRL+SPACE</strong>, the code assistance window is shown.</p>
+<p><img alt="" src="../_attachments/image040.png"></p>
 </li>
 <li>
-<p>Now we start the app container with the Docker image with the following command:</p>
-<div class="highlight"><pre><span></span><code>docker run -d --rm -p 9080:9080 --name resorts default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
-</code></pre></div>
+<p>Select <strong>feature</strong> (<strong>A</strong>) from the code assistant window to add a new feature element.</p>
+<p><img alt="" src="../_attachments/image041.png">  </p>
+<p>This will add a new feature element to the file.</p>
+<p><img alt="" src="../_attachments/image042.png"></p>
 </li>
 <li>
-<p>To verify the container is running, issue the following command:</p>
-<div class="highlight"><pre><span></span><code>docker ps | grep resorts
-</code></pre></div>
-<p>We can see that the container is running.</p>
-<p><img alt="" src="_attachments/image051.png"> </p>
+<p>Type <strong>tr</strong> (<strong>A</strong>) in the feature field, the code assistant will offer the feature names containing the word tr.  Select the <strong>transportSecurity-1.0</strong> (<strong>B</strong>) to add the feature.</p>
+<p><img alt="" src="../_attachments/image043.png"></p>
+<p>As you can see that in Liberty Dev Mod, once the new feature is added, the server configuration is dynamically updated. Liberty code assistant automatically detects that the <strong>transportSecurity-1.0</strong> feature requires the <strong>ssl-1.0</strong> feature, so it adds the <strong>ssl-1.0</strong> feature to the Liberty server configuration as well. </p>
+<p><img alt="" src="../_attachments/image044.png"></p>
 </li>
 <li>
-<p>To test the application, access its URL at <strong>http://localhost:9080/resorts</strong> (<strong>A</strong>) from a browser window.</p>
-<p><img alt="" src="_attachments/image052.png"> </p>
-<p>The <strong>Mod Resorts</strong> application page is displayed.</p>
-<p><img alt="" src="_attachments/image053.png"> </p>
-</li>
-<li>
-<p>Click <strong>WHERE TO?</strong> (<strong>A</strong>) and select <strong>San Francisco, USA</strong> (<strong>B</strong>).</p>
-<p><img alt="" src="_attachments/image054.png"> </p>
-<p>The weather information is San Francisco is showing.</p>
-<p><img alt="" src="_attachments/image055.png"> </p>
-<p>Now we have tested and verified that the app is running on Liberty container. What we will do next is to deploy the app in Liberty container to OCP.</p>
+<p>Now the https port is activated, if you try again to access the application from the browser window using the https port as: https://localhost:9443/whereami/ and accept the warning messages, you will get the application page.</p>
+<p><img alt="" src="../_attachments/image045.png"></p>
+<p>You can see now the protocol scheme is https and the port is 9443 which means that the https protocol is activated.</p>
+<p>This demonstrates that using Liberty code assistance you can modify Liberty server configuration without restart the server.</p>
 </li>
 </ol>
-<h3 id="6-deploy-to-openshift-environment">6    Deploy to OpenShift environment</h3>
+<h3 id="6-modify-application-code-with-liberty-code-assistant">6    Modify application code with Liberty Code Assistant</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Talking Points
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>In the last section, I have built the Mod Resorts app on Liberty container image and tested it.
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Also in the previous section, we explored the Kubernetes kustomize structure coming from the Transformation Advisor migration bundle.
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>In this section I will use the kustomize tool to deploy the Mod Resorts app to OCP. 
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Before I do the deployment, I will stop the local Docker container first.
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>In order to deploy the Mod Resorts app to OCP, I will push the image to an image registry which can be any image registry the clients are using. In this demo, I am going to use the internal registry that is available in the OCP environment. 
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>To push the image into OCP, I will need to log into the OCP environment, create a new project called resorts for the app and log into the internal OCP image registry. Then I will run a single command to push the app image from my local VM to the OCP image registry. 
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>After pushed the image into the OCP image registry, I will verify it either from command line or from the OCP web console.
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>Once I have uploaded the app image into OCP, I am ready to deploy the app to OCP. With Transformation Advisor, this deployment process is made really simple by using the artifacts that Transformation Advisors created and using the kustomize tool in Kubernetes. One can configure and deploy all in a single command and a single step.
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>After the app is deployed to OCP, we can access it through its route URL which is generated by the Liberty operator.
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>In the previous section, I shown how to use Liberty code assistance to update the Liberty server configuration. 
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Now I am going to use Liberty code assistant to make quick modifications to the application code. I will make code modifications to change the color of the text showing on the application page for different network protocols. I will have the red color for http protocol and the green color for https protocol. I will show how easy it is to make change the application code with the help of Liberty Code Assistant in Liberty Dev Mod.
 </code></pre></div>
 <ol>
 <li>
-<p>From a terminal window, run the following command to stop the local Liberty container.</p>
-<div class="highlight"><pre><span></span><code>docker stop resorts
+<p>In the VS Code environment, click to open the servlet java file <strong>WhereAmI.java</strong> (<strong>A</strong>) under <strong>src/main/java/com/demo</strong>.</p>
+<p><img alt="" src="../_attachments/image046.png"></p>
+</li>
+<li>
+<p>Scroll down to <strong>line 45</strong> (<strong>A</strong>) and create a <strong>new line</strong> (<strong>B</strong>) in the file.</p>
+<p><img alt="" src="../_attachments/image047.png"> </p>
+</li>
+<li>
+<p>Type <strong>i</strong> (<strong>A</strong>) and use Liberty code assistant (<strong>CTRL+SPACE</strong>) to select the <strong>if statement</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image048.png"></p>
+</li>
+<li>
+<p>Highlight <strong>condtion:var(boolean)</strong> (<strong>A</strong>), press C<strong>TRL+SPACE</strong> and select <strong>httpScheme</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image049.png"></p>
+</li>
+<li>
+<p>Type <strong>== "http"</strong> (<strong>A</strong>) next to <strong>httpScheme</strong>.</p>
+<p><img alt="" src="../_attachments/image050.png"> </p>
+</li>
+<li>
+<p>Move to the <strong>next line</strong> (<strong>A</strong>), press <strong>CTRL+SPACE</strong>, and select <strong>zone</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image051.png"> </p>
+</li>
+<li>
+<p>Type <strong>= "red";</strong> (<strong>A</strong>) next to the <strong>zone</strong>.</p>
+<p><img alt="" src="../_attachments/image052.png"></p>
+</li>
+<li>
+<p>Repeat the same process to add another if statement like this:</p>
+<div class="highlight"><pre><span></span><code>if (httpScheme == "https") {
+    zone = "green";
+}
 </code></pre></div>
-<p>The local Liberty container is now stopped.</p>
+<p>You should see the application code you added as:</p>
+<p><img alt="" src="../_attachments/image053.png"></p>
 </li>
 <li>
-<p>Log in to the OCP cluster with command:</p>
-<div class="highlight"><pre><span></span><code>oc login -u ocadmin -p ibmrhocp
-</code></pre></div>
-<p><img alt="" src="_attachments/image056.png"></p>
-</li>
-<li>
-<p>Create a new project called resorts for the Mod Resorts app with command:</p>
-<div class="highlight"><pre><span></span><code>oc new-project resorts
-</code></pre></div>
-<p><img alt="" src="_attachments/image057.png"></p>
-</li>
-<li>
-<p>Log in to the OCP image registry with command:</p>
-<div class="highlight"><pre><span></span><code>docker login -u $(oc whoami) -p $(oc whoami -t) default-route-openshift-image-registry.apps.ocp.ibm.edu
-</code></pre></div>
-<p><img alt="" src="_attachments/image058.png"></p>
-</li>
-<li>
-<p>Now push the app image to the OCP image registry with command:</p>
-<div class="highlight"><pre><span></span><code>docker push default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
-</code></pre></div>
-<p><img alt="" src="_attachments/image059.png"></p>
-<p><strong>Note</strong>: It might take a few minutes to upload the image to the registry.</p>
-</li>
-<li>
-<p>After the image is uploaded to the OCP image registry, we can verify it with command:</p>
-<div class="highlight"><pre><span></span><code>oc get is
-</code></pre></div>
-<p><img alt="" src="_attachments/image060.png"> </p>
-</li>
-<li>
-<p>We can also verify it from the OCP web console.</p>
-<p>a.  Access the OCP web console by clicking the <strong>OpenShift Console</strong> (<strong>A</strong>) bookmark in the web browser.</p>
-<p><img alt="" src="_attachments/image061.png"> </p>
-<p>b.  Accept the default Username/Password and click <strong>Log in</strong> (<strong>A</strong>).</p>
-<p><img alt="" src="_attachments/image062.png"></p>
-<p>After logged in, the OCP web console Home page is displayed.</p>
-<p><img alt="" src="_attachments/image063.png"> </p>
-<p>c.  Click <strong>Builds</strong> (<strong>A</strong>), select <strong>ImageStreams</strong> (<strong>B</strong>) and select <strong>resorts project</strong> (<strong>C</strong>), we can see that the app image is listed.</p>
-<p><img alt="" src="_attachments/image064.png">    </p>
-<p>d.  Click the <strong>app image link</strong> (<strong>A</strong>) to view its details.</p>
-<p><img alt="" src="_attachments/image065.png"> </p>
-<p>The app image detail page is displayed.</p>
-<p><img alt="" src="_attachments/image066.png"> </p>
-<p>Now we have verified that the app image is uploaded, we are ready to deploy the app to OCP using the YAML artifacts generated by Transformation Advisor.</p>
-</li>
-<li>
-<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Pods</strong> (<strong>B</strong>), we can see that currently we do not have any app pods running.</p>
-<p><img alt="" src="_attachments/image067.png"></p>
-</li>
-<li>
-<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Deployment</strong> (<strong>B</strong>), we can see that currently we do not have any app deployment yet.</p>
-<p><img alt="" src="_attachments/image068.png"></p>
-</li>
-<li>
-<p>To deploy the Mod Resorts app to OCP, go to the terminal window and run the following commands:</p>
-<div class="highlight"><pre><span></span><code>cd /home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready
-
-cd deploy/kustomize
-
-oc apply -n resorts -k overlays/resorts_1.0
-</code></pre></div>
-<p><img alt="" src="_attachments/image069.png"></p>
-<p>This is a quick command run. Please note that the <strong>oc apply</strong> command is using the kustomize tool with a <strong>-k</strong> option and it is pointing to the <strong>overlays</strong> directory and a sub directory named <strong>resource_1.0</strong>, so it uses the YAML files in that overlay directory in addition to the base configuration that is in the <strong>base</strong> directory of the migration bundle.</p>
-</li>
-<li>
-<p>To check the status of the deployment, we can run command:</p>
-<div class="highlight"><pre><span></span><code>oc get pods
-</code></pre></div>
-<p>We can see that 8 pods are created and they are starting to run. We might need to run the same command a few times until all 8 pods are up running.</p>
-<p><img alt="" src="_attachments/image070.png"> </p>
-</li>
-<li>
-<p>Once these pods are up and running, we need to get the application route so we can access it. To get the route, run command:</p>
-<div class="highlight"><pre><span></span><code>oc get route -n resorts
-</code></pre></div>
-<p>We can see that the app route is: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu</strong></p>
-<p><img alt="" src="_attachments/image071.png"></p>
-</li>
-<li>
-<p>With the app route information, we can access the Mod Resorts app in OCP from a web browser by entering the URL as: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu/resorts</strong> (<strong>A</strong>).</p>
-<p><img alt="" src="_attachments/image072.png"></p>
-<p>We can see that the <strong>Mod Resorts</strong> app has been successfully deployed to the OCP environment and is running on the OCP now.</p>
+<p>To verify the code changes, you can access the application page in the browser window with both http and https ports, and you can see the changes you made to the application.</p>
+<p><img alt="" src="../_attachments/image054.png">
+<img alt="" src="../_attachments/image055.png"></p>
+<p>As you can see that when you made changes to your code, the changes were automatically saved and Liberty server adopted these new changes dynamically without re-starting. So as a developer, you can quick change, test and verify my application code.</p>
 </li>
 </ol>
-<h3 id="7-review-the-deployment-configuration-and-use-the-license-service">7    Review the deployment configuration and use the License service</h3>
+<h3 id="7-conduct-a-unit-test-in-liberty-dev-mode">7    Conduct a unit test in Liberty dev mode</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Talking Points
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>I have deployed the Mod Resorts app to the OCP environment with 8 pods running in the previous section.  Now I will take a look at the deployment YAML file to review the deployment configuration.
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>With Liberty Dev Mod, it is easy to conduct a unit test in the IDE.  Within the IDE, I can run the unit test and integration test by right-clicking project under LIBERTY DEV DASHBOARD and select run test.  This will active the test run and show the test results in the VS Code terminal window.  Another way to activate the unit test is to press the Enter key in the VS Code terminal window.
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>To deploy the Mod Resorts app to the OCP, I used the app YAML file in the base/kustomize folder of the migration bundle, which actually points to the app image that I pushed to the OCP image registry.
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>In this particular deployment YAML file, I have specified to spin up 8 replicas of the Mod Resorts app and that is the reason we see the 8 pods running in the OCP environment.
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>I added the license tracking information in the YAML file, so we see how the license service is working with the Liberty operator in OCP. 
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>In order to deploy the app and use the license service in OCP, I need to specify that I accept the license, where to get the entitlement from and what the Liberty edition I am using. I set the entitlement and the Liberty edition as: the Cloud Pak for Applications and Liberty Core. 
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>Additionally, I put a resource limit on the amount of CPU each pod can use and specified it as 1 virtual core. In general, the CPU limit should be set to a value for what the app needs, the value impacts not only the licensing but also the app deployment and overall CPU usage. I did this setting to demo the license tracking capability in OCP. Because in Cloud Pak for Applications Standard edition Liberty Core deployment is based on virtual processor cores in 8 to 1 ratio, meaning that based on the deployment configuration I set, even I have 8 Liberty Core pods running in OCP, I only consumed 1 virtual processor core of Cloud Pak for Applications. 
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>Finally, I will show how to access the License tracing service report in OCP.
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>In this section I will show how to do a unit test. The test is designed to check if the title of the application is in capital letters or not.  It will be successful if the title of the application is in capital letters, otherwise it will fail.
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>By default, the title of the application is not in all capital letters, so my unit test will fail and provide information about where the issue is and how to fix it.  Based on the information, I will fix the error and run the test again, the unit test will be a success after the code fixing.  I will demonstrate how the Liberty Code Assistant and Liberty Dev Mod can help speed up the unit test process.
 </code></pre></div>
+<p>As you know from the previous section, the title of the application, Where Am I Running?,  is not all in capital letters as shown below:</p>
+<p><img alt="" src="../_attachments/image054.png"></p>
+<p>So your unite test will not going to be successful as expected.</p>
 <ol>
 <li>
-<p>To review the deployment configurations, double-click the <strong>File Manager</strong> (<strong>A</strong>) icon on the Desktop.</p>
-<p><img alt="" src="_attachments/image073.png"> </p>
+<p>From the VS Code environment, go to the <strong>terminal window</strong> and press <strong>Enter</strong> (<strong>A</strong>).</p>
+<p><img alt="" src="../_attachments/image056.png"></p>
+<p>This will activate the unit test and integration test. You will see that the tests will fail with the message: FAIL! ---&gt; The header is in ‘lower case’!.</p>
+<p><img alt="" src="../_attachments/image057.png"></p>
 </li>
 <li>
-<p>Navigate to the <strong>/home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready/deploy/kustomize/base</strong> directory.</p>
-<p>The contents in the directory are displayed.</p>
-<p><img alt="" src="_attachments/image074.png"> </p>
+<p>To fix the error, you need to update your code. Go back to WhereAmI.java file in VS Code, <strong>scroll down</strong> (<strong>A</strong>) and go to the <strong>line 64</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image058.png"></p>
 </li>
 <li>
-<p>Click the <strong>application-cr.yaml</strong> (<strong>A</strong>) file to open it for reviewing. This is the application customer resource YAML file.</p>
-<p><img alt="" src="_attachments/image075.png"></p>
-<p>The content of the YAML file is displayed.</p>
-<p><img alt="" src="_attachments/image076.png"> </p>
-<p>As we can see from this configuration file, the deployment replica is set as 8. The app image is pointing to the image that we pushed to the OCP image registry. The license tracking information is added as Cloud Pak for Application and Liberty Core and the CPU resource limit is set at 1000m.</p>
+<p>Type <strong>w</strong> (<strong>A</strong>) in the new line and use Liberty code assistant (<strong>CTRL+SPACE</strong>) to select <strong>whereami</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image059.png"></p>
 </li>
 <li>
-<p>Now we can take a look at the license tracing service report about our license usage. To do it, go to the web browser and click the <strong>IBM License Service Status-with token</strong> (<strong>A</strong>) bookmark.</p>
-<p><img alt="" src="_attachments/image077.png"> </p>
-<p><strong>Note</strong>: we can also enter the IBM License Service Status-with token URL as: 
-<strong>https://ibm-licensing-service-instance-ibm-common-services.apps.ocp.ibm.edu/status?token=dnwsnLNwvQ9ie4o9U5mpRhoG</strong></p>
-<p>The License Service Report is displayed.</p>
-<p><img alt="" src="_attachments/image078.png"> </p>
-<p>The report shows that Liberty Core is running in 8 pods with one CPU per pod, so in total we consume 8 CPUs and the total Cloud Pak for Application license consumed is 1.</p>
+<p>Type <strong>=</strong> (<strong>A</strong>) after <strong>whereami</strong>, press <strong>CTRL+SPACE</strong> and select <strong>whereami</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image060.png"></p>
 </li>
 <li>
-<p>Let’s see that happened to the report if we remove the Mod Resorts app deployment from the OCP. To do it, run the following command from the terminal window to delete the deployment:</p>
-<div class="highlight"><pre><span></span><code>oc delete -n resorts -k overlays/resorts_1.0
-</code></pre></div>
-<p><img alt="" src="_attachments/image079.png"></p>
+<p>Type <strong>.u</strong> (<strong>A</strong>) after <strong>wherami</strong> and select <strong>toUpperCase()</strong> (<strong>B</strong>).</p>
+<p><img alt="" src="../_attachments/image061.png"></p>
 </li>
 <li>
-<p>Now the Mod Resorts app deployment is deleted, let’s see what happened in the License Service Report. Go back to the browser window and <strong>refresh</strong> (<strong>A</strong>) the License Service Report page.</p>
-<p><img alt="" src="_attachments/image080.png"> </p>
-<p>As we can see there is nothing listed in the report anymore.</p>
-<p><img alt="" src="_attachments/image081.png"> </p>
+<p>Type <strong>;</strong> (<strong>A</strong>) in the end and the code change will look like this:</p>
+<p><img alt="" src="../_attachments/image062.png"></p>
+</li>
+<li>
+<p>Now go back to run your unite test again from the VS Code terminal window by pressing <strong>Enter</strong> (<strong>A</strong>).</p>
+<p><img alt="" src="../_attachments/image063.png"></p>
+<p>You will see that the unit test and integration test are successful with the message: PASS ! ---&gt; The head has been converted to UPPER CASE!.</p>
+<p><img alt="" src="../_attachments/image064.png"></p>
+</li>
+<li>
+<p>You can verify it in the whereami application at http://localhost:9080/whereami/.</p>
+<p><img alt="" src="../_attachments/image065.png"></p>
+<p>You can see that the change is made to the application title.</p>
 </li>
 </ol>
 <h3 id="8-summary">8    Summary</h3>
-<p>In this demo, we learned how to move a WebSphere app from WebSphere traditional to WebSphere Liberty container and deploy it to OCP using the deployment artifacts produced by Transformation Advisor in its migration bundle.</p>
-<p>You explored the options for deployment:</p>
-<ul>
-<li>Liberty as an image running in a local container.</li>
-<li>Liberty as an image running in OpenShift.</li>
-</ul>
-<p>You learned how to easily configure and deploy an app to OpenShift using Transformation Advisor migration bundle deployment artifacts which leverage the Kubernetes kustomize tool.</p>
-<p>You learned how to enable the License service to the track the Liberty license usage in the deployment YAML and use Liberty operator and IBM License Service in OCP to access the License tracking report.</p></div>
+<p>In this demo, you learned how developers can use Liberty in dev mode for achieving efficient iterative develop, test, debug cycle when developing Java based applications / microservices. As you explored the fast and efficient inner-loop development experience using the Liberty dev mode and VS Code IDE, your code was automatically compiled and deployed to the running server, making it easy to iterate on your changes. </p></div>
 
 
 
