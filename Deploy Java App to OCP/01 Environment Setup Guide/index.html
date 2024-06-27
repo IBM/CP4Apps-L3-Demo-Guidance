@@ -918,12 +918,10 @@
 <li>The reservation takes a moment to be created. You can check its status by selecting <strong>My library</strong> (<strong>A</strong>) then clicking <strong>My reservations</strong> (<strong>B</strong>).</li>
 </ol>
 <p><img alt="" src="../_attachments/image003.png"></p>
-<div class="highlight"><pre><span></span><code>You see your reservation is in the **Provisioning** status.
-</code></pre></div>
-<p><img alt="" src="../_attachments/image004.png"> </p>
-<div class="highlight"><pre><span></span><code>It might take 15 minutes for the demo environment to be provisioned. When the environment is created, its status is changed to **Ready**.
-![](_attachments/image005.png)
-</code></pre></div>
+<p>You see your reservation is in the <strong>Provisioning</strong> status.
+   <img alt="" src="../_attachments/image004.png"> </p>
+<p>It might take 15 minutes for the demo environment to be provisioned. When the environment is created, its status is changed to <strong>Ready</strong>.
+    <img alt="" src="../_attachments/image005.png"></p>
 <h3 id="3-access-the-demo-environment">3    Access the demo environment.</h3>
 <ol>
 <li>When the demo environment is provisioned, click the <strong>reservation icon</strong> (<strong>A</strong>) to go to its details page.</li>
@@ -948,70 +946,62 @@
 <p><strong>Note</strong>: That is a numeric zero in <strong>passw0rd</strong>.</p>
 <p>Once you log in to the Demo VM, you see the Desktop, which contains all the programs that you are going to use (browsers, terminal, and so on).
     <img alt="" src="../_attachments/image011.png"></p>
-<div class="highlight"><pre><span></span><code>The login credentials for the demo VM are:
-* User ID: **techzone**
-* Password: **passw0rd**
-</code></pre></div>
+<p>The login credentials for the demo VM are:
+    * User ID: <strong>techzone</strong>
+    * Password: <strong>passw0rd</strong> </p>
 <h3 id="4-tips-for-working-in-the-demo-environment">4    Tips for working in the Demo environment</h3>
 <ol>
-<li>
-<p>You can resize the viewable area by using the noVNC Settings options to resize the virtual desktop to fit your screen.</p>
-<p>a.  From the demo VM, click the <strong>twisty</strong> (<strong>A</strong>) on the noVNC control pane to open the menu. </p>
-</li>
+<li>You can resize the viewable area by using the noVNC Settings options to resize the virtual desktop to fit your screen.</li>
 </ol>
+<p>a.   From the demo VM, click the <strong>twisty</strong> (<strong>A</strong>) on the noVNC control pane to open the menu. </p>
 <p><img alt="" src="../_attachments/image012.png"></p>
 <p>b.   To increase the visible area, click the <strong>Settings</strong> (<strong>A</strong>) icon and select <strong>Remote Resizing</strong> (<strong>B</strong>) from the Scaling Mode dropdown box.</p>
 <p><img alt="" src="../_attachments/image013.png"></p>
 <ol start="2">
-<li>
-<p>You can copy / paste text from the Demo guide into the Demo environment by using the clipboard in the noVNC viewer. </p>
-<p>a.  Copy the text from the Demo guide that you want to paste into the Demo environment.</p>
-<p>b.  Click the <strong>Clipboard</strong> (<strong>A</strong>) icon and paste the text into the noVNC <strong>Clipboard</strong> (<strong>B</strong>).</p>
-</li>
+<li>You can copy / paste text from the Demo guide into the Demo environment by using the clipboard in the noVNC viewer. </li>
 </ol>
+<p>a.   Copy the text from the Demo guide that you want to paste into the Demo environment.</p>
+<p>b.   Click the <strong>Clipboard</strong> (<strong>A</strong>) icon and paste the text into the noVNC <strong>Clipboard</strong> (<strong>B</strong>).</p>
 <p><img alt="" src="../_attachments/image014.png"> </p>
 <p>c.   Paste the text into the VM, such as to a terminal window, text editor or browser window.</p>
 <p>d.   Click on the clipboard icon again to close the clipboard
  </p>
 <h3 id="5-configure-the-demo-environment">5    Configure the demo environment</h3>
 <ol>
-<li>
-<p>Clone GitHub demo artifacts</p>
-<p>To run the demo, you need to clone the GitHub demo artifacts to the Demo VM environment first.</p>
-<p>a.  Click the <strong>terminal</strong> (<strong>A</strong>) icon.</p>
-</li>
+<li>Clone GitHub demo artifacts</li>
 </ol>
+<p>To run the demo, you need to clone the GitHub demo artifacts to the Demo VM environment first.</p>
+<p>a.   Click the <strong>terminal</strong> (<strong>A</strong>) icon.</p>
 <p><img alt="" src="../_attachments/image015.png"></p>
 <p>b. Clone the GitHub repo by running the following commands from the terminal window. </p>
 <div class="highlight"><pre><span></span><code>    cd /home/techzone
     git clone https://github.com/IBMTechSales/appmod-pot-labfiles.git
 
     Once it is done, the local demo artifacts repo will be at the /home/techzone/appmod-pot-labfiles directory on the Demo VM desktop.
-
-c.  Copy the demo zip file to the /home/techzone/Downloads directory and unpack it by running the following commands:
-
-    cp /home/techzone/appmod-pot-labfiles/demo/modresorts10war.ear_migrationBundle-demo_ready.zip /home/techzone/Downloads
+</code></pre></div>
+<p>c.   Copy the demo zip file to the /home/techzone/Downloads directory and unpack it by running the following commands:</p>
+<div class="highlight"><pre><span></span><code>    cp /home/techzone/appmod-pot-labfiles/demo/modresorts10war.ear_migrationBundle-demo_ready.zip /home/techzone/Downloads
 
     unzip -d ~/Downloads /home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready.zip
 </code></pre></div>
 <ol start="2">
-<li>
-<p>Configure Transformation Advisor</p>
+<li>Configure Transformation Advisor</li>
+</ol>
 <p>a. Launch Transformation Advisor from the terminal window with the command:</p>
-<div class="highlight"><pre><span></span><code>transformation-advisor-local-3.8.1/launchTransformationAdvisor.sh
+<div class="highlight"><pre><span></span><code>    transformation-advisor-local-3.8.1/launchTransformationAdvisor.sh
 </code></pre></div>
 <p>b. Type <strong>5</strong> and press <strong>Enter</strong> (<strong>A</strong>) to start the Transformation Advisor.
-   <img alt="" src="../_attachments/image016.png"></p>
-<p>The Transformation Advisor is started after a few minutes.
-  <img alt="" src="../_attachments/image017.png"></p>
+       <img alt="" src="../_attachments/image016.png"></p>
+<div class="highlight"><pre><span></span><code>  The Transformation Advisor is started after a few minutes.
+  ![](_attachments/image017.png)
+</code></pre></div>
 <p>c. Access the Transformation Advisor page form a web browser by double-clicking the <strong>browser</strong> (<strong>A</strong>) icon on the desktop.
-<img alt="" src="../_attachments/image018.png"></p>
+    <img alt="" src="../_attachments/image018.png"></p>
 <p>d. Click the <strong>Transformation Advisor</strong> (<strong>A</strong>) bookmark in the browser to access it.
    <img alt="" src="../_attachments/image019.png"></p>
-<p>The Transformation Advisor page is displayed.
-   <img alt="" src="../_attachments/image020.png"> </p>
-</li>
-</ol>
+<div class="highlight"><pre><span></span><code>  The Transformation Advisor page is displayed.
+</code></pre></div>
+<p><img alt="" src="../_attachments/image020.png"> </p>
 <p>e.   Create a workspace in Transformation Advisor by clicking Create new (A).
    <img alt="" src="../_attachments/image021.png"></p>
 <p>f.   Type <strong>Evaluation</strong> (<strong>A</strong>) as the workspace name and click <strong>Create</strong> (<strong>B</strong>).
