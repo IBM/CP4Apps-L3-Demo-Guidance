@@ -1,0 +1,1423 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Guidances for setup demo envrionments and conduct CP4Apps L3 demos">
+      
+      
+        <meta name="author" content="Yi Tang (yitang@us.ibm.com)">
+      
+      
+      
+        <link rel="prev" href="../01%20Environment%20Setup%20Guide/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Demo Guide - CP4Apps - L3 - Demo - Guidance</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-java-app-to-ocp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CP4Apps - L3 - Demo - Guidance" class="md-header__button md-logo" aria-label="CP4Apps - L3 - Demo - Guidance" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CP4Apps - L3 - Demo - Guidance
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Demo Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CP4Apps - L3 - Demo - Guidance" class="md-nav__button md-logo" aria-label="CP4Apps - L3 - Demo - Guidance" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CP4Apps - L3 - Demo - Guidance
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deploy Java App to OCP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Deploy Java App to OCP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%20Environment%20Setup%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Setup Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-demo-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-on demo guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-on demo guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-access-transformation-advisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Access Transformation Advisor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-download-transformation-advisor-migration-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Download Transformation Advisor migration plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-review-the-updated-transformation-advisor-migration-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Review the updated Transformation Advisor migration bundle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-docker-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Create Docker container image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 Deploy to OpenShift environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-review-the-deployment-configuration-and-use-the-license-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 Review the deployment configuration and use the License service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 SUMMARY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deploy Java App to OCP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Deploy Java App to OCP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%20Environment%20Setup%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Setup Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-demo-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-on demo guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-on demo guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-access-transformation-advisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Access Transformation Advisor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-download-transformation-advisor-migration-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Download Transformation Advisor migration plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-review-the-updated-transformation-advisor-migration-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Review the updated Transformation Advisor migration bundle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-docker-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Create Docker container image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 Deploy to OpenShift environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-review-the-deployment-configuration-and-use-the-license-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 Review the deployment configuration and use the License service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 SUMMARY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deploy Java App to OCP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deploy Java App to OCP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01%20Environment%20Setup%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Setup Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-demo-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-on demo guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-on demo guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-access-transformation-advisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Access Transformation Advisor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-download-transformation-advisor-migration-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Download Transformation Advisor migration plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-review-the-updated-transformation-advisor-migration-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Review the updated Transformation Advisor migration bundle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-docker-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Create Docker container image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 Deploy to OpenShift environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-review-the-deployment-configuration-and-use-the-license-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 Review the deployment configuration and use the License service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 SUMMARY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-demo-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-on demo guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-on demo guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-access-transformation-advisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Access Transformation Advisor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-download-transformation-advisor-migration-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Download Transformation Advisor migration plan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-review-the-updated-transformation-advisor-migration-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Review the updated Transformation Advisor migration bundle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-docker-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Create Docker container image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 Deploy to OpenShift environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-review-the-deployment-configuration-and-use-the-license-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 Review the deployment configuration and use the License service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 SUMMARY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="deploy-java-app-to-ocp">Deploy Java App to OCP</h1>
+<h2 id="hands-on-demo-guide">Hands-on demo guide</h2>
+<h3 id="1-introduction">1    Introduction</h3>
+<p>This demo provides fundamental hands-on experience with modernizing existing Java applications to WebSphere Liberty, deployed into a container platform, such as Red Hat OpenShift.</p>
+<p>The focus of this demo is on the practical aspects of how to use the deployment artifacts created by Transformation Advisor to speed up the process to deploy a Java app to Liberty running on OpenShift to achieve the objective for operation modernization.</p>
+<p><strong>Open Liberty</strong> is an application server designed for the cloud. It’s small, lightweight, and designed with modern cloud-native application development in mind. </p>
+<p>Open Liberty supports the full MicroProfile and Jakarta EE APIs and is composable, meaning that you can use only the features that you need, keeping the server lightweight, which is great for microservices. It also deploys to every major cloud platform, including Docker, Kubernetes, and Cloud Foundry.</p>
+<p><strong>Operational Modernization</strong> gives an operations team the opportunity to embrace modern operations best practices without putting change requirements on the development team.</p>
+<p>The scaling, routing, clustering, high availability, and continuous availability functionality that were previously provided by the application server middleware, can be provided by the container platform.</p>
+<p>This allows the operations team to run cloud-native and modernized applications in the same environment with the same standardized logging, monitoring, and security frameworks.</p>
+<p>The operation modernization solution provided by IBM Cloud Pak for Application is to move existing Java applications to Liberty containers.</p>
+<p><strong>IBM Cloud Transformation Advisor</strong> (TA) is an application modernization tool that is entitled through IBM Cloud Pak for Applications. Transformation Advisor helps you quickly evaluate on-premises Java EE applications for deployment to the cloud.</p>
+<p>The Transformation Advisor tool provides the following value:</p>
+<ul>
+<li>Identifies the Java EE programming models in the app</li>
+<li>Determines the complexity of replatforming these apps by listing a high-level inventory of the content and structure of each app</li>
+<li>Highlights Java EE programming model and WebSphere API differences between the WebSphere runtime profile types</li>
+<li>Identifies Java EE specification implementation differences that might affect the app</li>
+<li>Generates accelerators for deploying the application to Liberty and containers in a target environment</li>
+</ul>
+<p>Additionally, the tool provides a recommendation for the right-fit IBM WebSphere Application Server edition and offers advice, best practices, and potential solutions to assess the ease of moving apps to Liberty or newer versions of WebSphere traditional. It automatically generates a migration bundle with the artifacts you will need to containerize your application running on Liberty and deploy it to OpenShift Cloud Platform, accelerating application migrating to cloud process, minimizing errors and risks and reducing time to market.</p>
+<p><strong>Operator</strong> is the Kubernetes operator and specifically the Liberty operator. Liberty operator is used in the demo to deploy the app running on Liberty to the OpenShift Container Platform (OCP). The value of operators, in general, is that it really simplifies the amount of configuration required to do a deployment via all the YAML files that are typically required in Kubernetes. Additional benefits specifically to the Liberty operator is that it offers the automation of common tasks, like deploying, scaling, getting dumps, including thread dumps, core dumps and heap dumps, and gathering app logs. Another key benefit of the operator is that it provides out-of-the-box security capability, including certificate management integration with OCP and single sign-on delegation.</p>
+<p><strong>Kubernetes Kustomize</strong> is a tool that is native to Kubernetes that is available for customizing Kubernetes configuration. The idea is that the base configuration can be reused for deployments across different environments like development, staging, and production. The changes and modifications for different environments are provided as the adjustment snippets for the base configuration override. In this demo the deployment YAML file created by Transformation Advisor uses the Kustomize tool.</p>
+<p><strong>Mod Resorts</strong> app is a WebSphere application showing the weather in various locations. This app is initially developed for WebSphere traditional.  In the demo it will be moved to Liberty in a container and deployed to OCP.
+   <img alt="" src="../_attachments/image030.png"></p>
+<p><strong>Demo Commands File</strong> lists all the commands used to setup and run the demo, so you can open it in a text editor and directly copy/paste the commands during the demo without going through the noVNC control pane. This file is provided to simplify the demo process. The file name is demo-setup-plus-commands.txt and it is in the <strong>/home/techzone/appmod-pot-labfiles/demo</strong> directory. 
+   <img alt="" src="../_attachments/image031.png"> 
+The commands used for this demo start from line 71 of the file.
+   <img alt="" src="../_attachments/image032.png"></p>
+<p>In this demo, we are going to showcase how to rapidly deploy and configure the Mod Resorts app in Liberty running on an OpenShift Container Platform (OCP). We will show how easy it is to use IBM Transformation Advisors migration artifacts to accelerate the steps of the modernization journey, including build, configuration, and deployment. It will demonstrate that how quickly clients can realize the values from WebSphere Liberty and OCP, which provide greater deployment flexibility and operational efficiencies across the enterprise. We are also going to show how to config and use IBM License Service in OCP.</p>
+<p>The objectives of this demo are to:</p>
+<ul>
+<li>Learn how to use the Transformation Advisor migration bundle to build the application into a container image</li>
+<li>Learn the role of Kustomize when deploying the migration bundle</li>
+<li>Learn how to deploy the app to OpenShift with a single command</li>
+<li>Review the deployment configuration and learn how to configure and use the IBM License Service tracking in OCP</li>
+</ul>
+<h3 id="2-access-transformation-advisor">2    Access Transformation Advisor</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Talking Points
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>To get started in the demo, I will go to IBM Transformation Advisor User Interface to look at the WebSphere applications Transformation Advisor analyzed 
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>At the beginning of this demo, I have already gotten the Transformation Advisor Data Collector run on the WebSphere Application Server and gotten the analysis data loaded into the Transformation Advisor User Interface. 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Now let me go to Transformation Advisor User Interface to take a look at these applications. I will focus on the simple WebSphere applications Transformation Advisor identified. A simple application is the app that Transformation Advisor has assessed and indicated that no code changes are required for the app to run on Liberty. 
+</code></pre></div>
+<ol>
+<li>
+<p>If the Transformation Advisor is not started yet, start it by running the command below in a terminal window. Otherwise skip this step.</p>
+<div class="highlight"><pre><span></span><code>cd /home/techzone/transformation-advisor-local-3.8.1
+
+./launchTransformationAdvisor.sh
+</code></pre></div>
+</li>
+<li>
+<p>Type 5 and press Enter (A) to start the Transformation Advisor.
+<img alt="" src="../_attachments/image016.png"> </p>
+<p>The Transformation Advisor is started after a few minutes.
+<img alt="" src="../_attachments/image017.png"> </p>
+<p><strong>Note</strong>: you might see an error message when launching the Transformation Advisor, just ignore it, because it will not impact the start of Transformation Advisor.</p>
+</li>
+<li>
+<p>Access Transformation Advisor page from a web browser by clicking the Transformation Advisor (A) bookmark in the browser.
+<img alt="" src="../_attachments/image019.png"> </p>
+<p>The Transformation Advisor page is displayed.
+<img alt="" src="../_attachments/image033.png"> </p>
+</li>
+<li>
+<p>Click the <strong>Evaluation workspace</strong> (<strong>A</strong>) to open it.
+<img alt="" src="../_attachments/image034.png"> </p>
+<p>The Evaluation workspace is displayed.
+<img alt="" src="../_attachments/image035.png"> </p>
+<p>Notice that only <strong>WebSphere Liberty</strong> is selected as <strong>Migration target</strong> which is the platform we want to move the Mod Resorts app to.</p>
+</li>
+</ol>
+<h3 id="3-download-transformation-advisor-migration-plan">3    Download Transformation Advisor migration plan</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Talking Points
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Now I am in Transformation Advisor and as one can see there are five applications assessed. 
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>We have other demonstrations that showcase how to do an application assessment and how to interpret the results, but in this demo, I am going to focus primarily on the migration plan and what it is going to take to move an application from the WebSphere traditional to WebSphere Liberty running on a container platform.
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>I want to focus on moving a simple application from WebSphere traditional to Liberty without any code change. As you can see, five applications have been assessed and four of these have been classified as simple, meaning no code change is required to move them to Liberty. I will choose the Mod Resort application that I have staged and set up for the demo.
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>First, I will take a look at the Transformation Advisor migration plan which contains the artifacts that have been generated by Transformation Advisor as a result of scanning the application and the configuration in WebSphere Application Server (WAS). By doing so, I can understand the Liberty server configuration, the build file to build the container image as well as the YAML artifacts to deploy into a Kubernetes and OCP which are created by Transformation advisor. 
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>In this task, I need to simply download the migration plan to my local workstation.
+</code></pre></div>
+<ol>
+<li>
+<p>Scroll down to locate the <strong>Mod Resort application</strong> (<strong>A</strong>) in Transformation Advisor and click <strong>Migration plan</strong> (<strong>B</strong>).
+<img alt="" src="../_attachments/image036.png"> </p>
+</li>
+<li>
+<p>The Migration plan page is displayed, click <strong>Download</strong> (<strong>A</strong>).
+<img alt="" src="../_attachments/image037.png"> </p>
+<p>The Migration plan package named modresorts10war.ear_migrationBundle.zip is now downloaded to the Downloads directory of the demo VM. It contains the Liberty server configuration (server.xml), the build file (Containerfile) to build the container image as well as the YAML artifacts to deploy into a Kubernetes or OCP environment.
+<img alt="" src="../_attachments/image038.png"></p>
+<p><strong>Note</strong>: The Transformation Advisor Migration plan package is also called the Transformation Advisor migration bundle.</p>
+</li>
+</ol>
+<h3 id="4-review-the-updated-transformation-advisor-migration-bundle">4    Review the updated Transformation Advisor migration bundle</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Talking Points
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>The Mod Resorts app Migration bundle gets downloaded into the Downloads directory of the local file system from Transformation Advisor. In order to deploy the application to Liberty on OpenShift, I need to make a few changes to the bundle, including changing server configuration settings, adding app war file and update image file name and other settings in the deployment YAML file. To keep the demo simple, I will use a prepared migration bundle where I already applied the required changes. The prepared migration bundle package is in the modresorts10war.ear_migrationBundle-demo_ready directory.
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>I will take a quick look at what are in the migration bundle:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>1. The bundle includes a file named Containerfile to build the container image with the app deployed on Liberty. 
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>2. I placed the war file of the Mod Resorts app into the target directory. Since no code changes are required, I do not need to rebuild the application and just copied the war file that WAS used. 
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>3. The source directory in the bundle includes the liberty server configuration file, server.xml, which is created by Transformation Advisor. It includes the server configuration for Mod Resorts to run in Liberty and a few minor modifications I made.
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>4. The last piece I want to look at is the deployment artifacts in the deploy directory of the migration bundle. These are the YAML files that Transformation Advisor created to deploy the app to a Kubernetes environment using the standard Kubernetes resources or the Liberty operator. In this demo, I am using the Liberty Operator and the Kustomize tool to deploy the app to OCP. 
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>Basically, I have the customization files for deploying the Mod Resorts app to Liberty container running on OCP and I will use these customized migration bundle files that Transformation Advisor generated.
+</code></pre></div>
+<ol>
+<li>
+<p>From the File manager window, click the <strong>modresorts10war.ear_migrationBundle-demo_ready</strong> (<strong>A</strong>) folder under the <strong>/home/techzone/Downloads </strong>directory to access it.
+<img alt="" src="../_attachments/image039.png"></p>
+</li>
+<li>
+<p>Review the contents in the directory. The migration bundle has all artifacts that we need to deploy the app to Liberty in container and to a Kubernetes environment. The <strong>Containerfile</strong> is the one to be used to create the Docker image.
+<img alt="" src="../_attachments/image040.png"></p>
+</li>
+<li>
+<p>Click <strong>target</strong> (<strong>A</strong>) folder to access it.
+<img alt="" src="../_attachments/image041.png"></p>
+<p>This directory contains the original app war file because there are no code changes needed to move it from WebSphere traditional to Liberty.
+<img alt="" src="../_attachments/image042.png"></p>
+</li>
+<li>
+<p>Click the <strong>src</strong> (<strong>A</strong>) folder and go to the <strong>main&gt;liberty&gt;config</strong> directory.
+<img alt="" src="../_attachments/image043.png"></p>
+<p>We see the Liberty configuration file, <strong>server.xml</strong>, which includes the server configuration for Mod Resorts to run in Liberty and a few minor modifications.
+<img alt="" src="../_attachments/image044.png"></p>
+</li>
+<li>
+<p>Click the <strong>deploy</strong> (<strong>A</strong>) folder to open it
+<img alt="" src="../_attachments/image045.png"></p>
+<p>We see two folders, k8s and kustomize, which contain the YAML files that Transformation Advisor created to deploy the app to a Kubernetes environment. While the k8s folder is used for deployments using the standard Kubernetes resources, kustomize is used for deployments using the Liberty operator.
+<img alt="" src="../_attachments/image046.png"></p>
+</li>
+<li>
+<p>Click the <strong>kustomize</strong> (<strong>A</strong>) folder and go to the <strong>base</strong> directory.
+<img alt="" src="../_attachments/image047.png"></p>
+<p>The <strong>base</strong> folder contains the YAML files used to deploy the app to a Liberty container running on OCP using Liberty operator.
+<img alt="" src="../_attachments/image048.png"></p>
+</li>
+</ol>
+<h3 id="5-create-docker-container-image">5    Create Docker container image</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Talking Points
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>To deploy the Mod Resorts app in Liberty on container, I need to build a container image for the app first. In this task, I am going to leverage the updated migration bundle artifices, and create a Docker container for the Mod Resorts app. I will show how easy it is to deploy the app in a local Docker container using the migration bundle artifices from Transformation Advisor.
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>The first thing I am going to do is to go to the migration bundle directory structure and run the command to build the Docker image. The command will take the Containerfile that Transformation Advisor created and it is going to build the container image for the Mod Resorts app running on Liberty. 
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>After the image is created, I will verify it by starting a Docker container with docker run command. I will verify that the container is running and show I can access the Mod Resorts app running on Liberty in a local Docker container.
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Once the image is created and verified, it is ready to be deployed to OCP in the next task.
+</code></pre></div>
+<ol>
+<li>
+<p>From a terminal window, go to migration bundle directory with command:</p>
+<div class="highlight"><pre><span></span><code>cd /home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready
+</code></pre></div>
+</li>
+<li>
+<p>Build Docker image with command:</p>
+<div class="highlight"><pre><span></span><code>docker build -f ./Containerfile --tag default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009 .
+</code></pre></div>
+<p>The Docker image is built.
+<img alt="" src="../_attachments/image049.png"> </p>
+<p><strong>Note</strong>: The first time to build the Docker image, it will take a longer time because it needs to download all the artifacts to the local demo VM. After that, each build will only pull down the updated artifacts, so the process will be much fast. Therefore, it is recommended to run the command to build the image first before doing the client facing demo to save time.</p>
+</li>
+<li>
+<p>To verify the Docker image, run the command below:</p>
+<div class="highlight"><pre><span></span><code>docker images | grep resorts
+</code></pre></div>
+<p>We can see that the Docker image is created.
+<img alt="" src="../_attachments/image050.png"> </p>
+</li>
+<li>
+<p>Now we start the app container with the Docker image with the following command:</p>
+<div class="highlight"><pre><span></span><code>docker run -d --rm -p 9080:9080 --name resorts default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
+</code></pre></div>
+</li>
+<li>
+<p>To verify the container is running, issue the following command:</p>
+<div class="highlight"><pre><span></span><code>docker ps | grep resorts
+</code></pre></div>
+<p>We can see that the container is running.
+<img alt="" src="../_attachments/image051.png"> </p>
+</li>
+<li>
+<p>To test the application, access its URL at <strong>http://localhost:9080/resorts</strong> (<strong>A</strong>) from a browser window.
+<img alt="" src="../_attachments/image052.png"> </p>
+<p>The Mod Resorts application page is displayed.
+<img alt="" src="../_attachments/image053.png"> </p>
+</li>
+<li>
+<p>Click <strong>WHERE TO?</strong> (<strong>A</strong>) and select <strong>San Francisco, USA</strong> (<strong>B</strong>).
+<img alt="" src="../_attachments/image054.png"> </p>
+<p>The weather information is San Francisco is showing.
+<img alt="" src="../_attachments/image055.png"> </p>
+<p>Now we have tested and verified that the app is running on Liberty container. What we will do next is to deploy the app in Liberty container to OCP.</p>
+</li>
+</ol>
+<h3 id="6-deploy-to-openshift-environment">6    Deploy to OpenShift environment</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Talking Points
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>In the last section, I have built the Mod Resorts app on Liberty container image and tested it.
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Also in the previous section, we explored the Kubernetes kustomize structure coming from the Transformation Advisor migration bundle.
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>In this section I will use the kustomize tool to deploy the Mod Resorts app to OCP. 
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Before I do the deployment, I will stop the local Docker container first.
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>In order to deploy the Mod Resorts app to OCP, I will push the image to an image registry which can be any image registry the clients are using. In this demo, I am going to use the internal registry that is available in the OCP environment. 
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>To push the image into OCP, I will need to log into the OCP environment, create a new project called resorts for the app and log into the internal OCP image registry. Then I will run a single command to push the app image from my local VM to the OCP image registry. 
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>After pushed the image into the OCP image registry, I will verify it either from command line or from the OCP web console.
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>Once I have uploaded the app image into OCP, I am ready to deploy the app to OCP. With Transformation Advisor, this deployment process is made really simple by using the artifacts that Transformation Advisors created and using the kustomize tool in Kubernetes. One can configure and deploy all in a single command and a single step.
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>After the app is deployed to OCP, we can access it through its route URL which is generated by the Liberty operator.
+</code></pre></div>
+<ol>
+<li>
+<p>From a terminal window, run the following command to stop the local Liberty container.</p>
+<div class="highlight"><pre><span></span><code>docker stop resorts
+</code></pre></div>
+<p>The local Liberty container is now stopped.</p>
+</li>
+<li>
+<p>Log in to the OCP cluster with command:</p>
+<div class="highlight"><pre><span></span><code>oc login -u ocadmin -p ibmrhocp
+</code></pre></div>
+<p><img alt="" src="../_attachments/image056.png"></p>
+</li>
+<li>
+<p>Create a new project called resorts for the Mod Resorts app with command:</p>
+<div class="highlight"><pre><span></span><code>oc new-project resorts
+</code></pre></div>
+<p><img alt="" src="../_attachments/image057.png"></p>
+</li>
+<li>
+<p>Log in to the OCP image registry with command:</p>
+<div class="highlight"><pre><span></span><code>docker login -u $(oc whoami) -p $(oc whoami -t) default-route-openshift-image-registry.apps.ocp.ibm.edu
+</code></pre></div>
+<p><img alt="" src="../_attachments/image058.png"></p>
+</li>
+<li>
+<p>Now push the app image to the OCP image registry with command:</p>
+<div class="highlight"><pre><span></span><code>docker push default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
+</code></pre></div>
+<p><img alt="" src="../_attachments/image059.png"></p>
+<p><strong>Note</strong>: It might take a few minutes to upload the image to the registry.</p>
+</li>
+<li>
+<p>After the image is uploaded to the OCP image registry, we can verify it with command:</p>
+<div class="highlight"><pre><span></span><code>oc get is
+</code></pre></div>
+<p><img alt="" src="../_attachments/image060.png"> </p>
+</li>
+<li>
+<p>We can also verify it from the OCP web console.</p>
+<p>a.  Access the OCP web console by clicking the <strong>OpenShift Console</strong> (<strong>A</strong>) bookmark in the web browser.
+<img alt="" src="../_attachments/image061.png"> </p>
+<p>b.  Accept the default Username/Password and click <strong>Log in</strong> (<strong>A</strong>).
+<img alt="" src="../_attachments/image062.png"></p>
+<p>After logged in, the OCP web console Home page is displayed.
+<img alt="" src="../_attachments/image063.png"> </p>
+<p>c.  Click <strong>Builds</strong> (<strong>A</strong>), select <strong>ImageStreams</strong> (<strong>B</strong>) and select <strong>resorts project</strong> (<strong>C</strong>), we can see that the app image is listed.
+<img alt="" src="../_attachments/image064.png">    </p>
+<p>d.  Click the <strong>app image link</strong> (<strong>A</strong>) to view its details.
+<img alt="" src="../_attachments/image065.png"> </p>
+<p>The app image detail page is displayed.
+<img alt="" src="../_attachments/image066.png"> </p>
+<p>Now we have verified that the app image is uploaded, we are ready to deploy the app to OCP using the YAML artifacts generated by Transformation Advisor.</p>
+</li>
+<li>
+<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Pods</strong> (<strong>B</strong>), we can see that currently we do not have any app pods running.
+<img alt="" src="../_attachments/image067.png"></p>
+</li>
+<li>
+<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Deployment</strong> (<strong>B</strong>), we can see that currently we do not have any app deployment yet.
+<img alt="" src="../_attachments/image068.png"></p>
+</li>
+<li>
+<p>To deploy the Mod Resorts app to OCP, go to the terminal window and run the following commands:</p>
+<div class="highlight"><pre><span></span><code>cd /home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready
+
+cd deploy/kustomize
+
+oc apply -n resorts -k overlays/resorts_1.0
+</code></pre></div>
+<p><img alt="" src="../_attachments/image069.png"></p>
+<p>This is a quick command run. Please note that the <strong>oc apply</strong> command is using the kustomize tool with a <strong>-k</strong> option and it is pointing to the <strong>overlays</strong> directory and a sub directory named <strong>resource_1.0</strong>, so it uses the YAML files in that overlay directory in addition to the base configuration that is in the <strong>base</strong> directory of the migration bundle.</p>
+</li>
+<li>
+<p>To check the status of the deployment, we can run command:</p>
+<div class="highlight"><pre><span></span><code>oc get pods
+</code></pre></div>
+<p>We can see that 8 pods are created and they are starting to run. We might need to run the same command a few times until all 8 pods are up running.
+<img alt="" src="../_attachments/image070.png"> </p>
+</li>
+<li>
+<p>Once these pods are up and running, we need to get the application route so we can access it. To get the route, run command:</p>
+<div class="highlight"><pre><span></span><code>oc get route -n resorts
+</code></pre></div>
+<p>We can see that the app route is: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu</strong>
+<img alt="" src="../_attachments/image071.png"></p>
+</li>
+<li>
+<p>With the app route information, we can access the Mod Resorts app in OCP from a web browser by entering the URL as: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu/resorts</strong> (<strong>A</strong>).
+<img alt="" src="../_attachments/image072.png"></p>
+<p>We can see that the <strong>Mod Resorts</strong> app has been successfully deployed to the OCP environment and is running on the OCP now.</p>
+</li>
+</ol>
+<h3 id="7-review-the-deployment-configuration-and-use-the-license-service">7    Review the deployment configuration and use the License service</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Talking Points
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>I have deployed the Mod Resorts app to the OCP environment with 8 pods running in the previous section.  Now I will take a look at the deployment YAML file to review the deployment configuration.
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>To deploy the Mod Resorts app to the OCP, I used the app YAML file in the base/kustomize folder of the migration bundle, which actually points to the app image that I pushed to the OCP image registry.
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>In this particular deployment YAML file, I have specified to spin up 8 replicas of the Mod Resorts app and that is the reason we see the 8 pods running in the OCP environment.
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>I added the license tracking information in the YAML file, so we see how the license service is working with the Liberty operator in OCP. 
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>In order to deploy the app and use the license service in OCP, I need to specify that I accept the license, where to get the entitlement from and what the Liberty edition I am using. I set the entitlement and the Liberty edition as: the Cloud Pak for Applications and Liberty Core. 
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>Additionally, I put a resource limit on the amount of CPU each pod can use and specified it as 1 virtual core. In general, the CPU limit should be set to a value for what the app needs, the value impacts not only the licensing but also the app deployment and overall CPU usage. I did this setting to demo the license tracking capability in OCP. Because in Cloud Pak for Applications Standard edition Liberty Core deployment is based on virtual processor cores in 8 to 1 ratio, meaning that based on the deployment configuration I set, even I have 8 Liberty Core pods running in OCP, I only consumed 1 virtual processor core of Cloud Pak for Applications. 
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>Finally, I will show how to access the License tracing service report in OCP.
+</code></pre></div>
+<ol>
+<li>
+<p>To review the deployment configurations, double-click the <strong>File Manager</strong> (<strong>A</strong>) icon on the Desktop.
+<img alt="" src="../_attachments/image073.png"> </p>
+</li>
+<li>
+<p>Navigate to the <strong>/home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready/deploy/kustomize/base</strong> directory.</p>
+<p>The contents in the directory are displayed.
+<img alt="" src="../_attachments/image074.png"> </p>
+</li>
+<li>
+<p>Click the <strong>application-cr.yaml</strong> (<strong>A</strong>) file to open it for reviewing. This is the application customer resource YAML file.
+<img alt="" src="../_attachments/image075.png"></p>
+<p>The content of the YAML file is displayed.
+<img alt="" src="../_attachments/image076.png"> </p>
+<p>As we can see from this configuration file, the deployment replica is set as 8. The app image is pointing to the image that we pushed to the OCP image registry. The license tracking information is added as Cloud Pak for Application and Liberty Core and the CPU resource limit is set at 1000m.</p>
+</li>
+<li>
+<p>Now we can take a look at the license tracing service report about our license usage. To do it, go to the web browser and click the <strong>IBM License Service Status-with token</strong> (<strong>A</strong>) bookmark.
+<img alt="" src="../_attachments/image077.png"> </p>
+<p><strong>Note</strong>: we can also enter the IBM License Service Status-with token URL as: 
+<strong>https://ibm-licensing-service-instance-ibm-common-services.apps.ocp.ibm.edu/status?token=dnwsnLNwvQ9ie4o9U5mpRhoG</strong></p>
+<p>The License Service Report is displayed.
+<img alt="" src="../_attachments/image078.png"> </p>
+<p>The report shows that Liberty Core is running in 8 pods with one CPU per pod, so in total we consume 8 CPUs and the total Cloud Pak for Application license consumed is 1.</p>
+</li>
+<li>
+<p>Let’s see that happened to the report if we remove the Mod Resorts app deployment from the OCP. To do it, run the following command from the terminal window to delete the deployment:</p>
+<div class="highlight"><pre><span></span><code>oc delete -n resorts -k overlays/resorts_1.0
+</code></pre></div>
+<p><img alt="" src="../_attachments/image079.png"></p>
+</li>
+<li>
+<p>Now the Mod Resorts app deployment is deleted, let’s see what happened in the License Service Report. Go back to the browser window and <strong>refresh</strong> (<strong>A</strong>) the License Service Report page.
+<img alt="" src="../_attachments/image080.png"> </p>
+<p>As we can see there is nothing listed in the report anymore.
+<img alt="" src="../_attachments/image081.png"> </p>
+</li>
+</ol>
+<h3 id="8-summary">8    SUMMARY</h3>
+<p>In this demo, we learned how to move a WebSphere app from WebSphere traditional to WebSphere Liberty container and deploy it to OCP using the deployment artifacts produced by Transformation Advisor in its migration bundle.</p>
+<p>You explored the options for deployment:</p>
+<ul>
+<li>Liberty as an image running in a local container.</li>
+<li>Liberty as an image running in OpenShift.</li>
+</ul>
+<p>You learned how to easily configure and deploy an app to OpenShift using Transformation Advisor migration bundle deployment artifacts which leverage the Kubernetes kustomize tool.</p>
+<p>You learned how to enable the License service to the track the Liberty license usage in the deployment YAML and use Liberty operator and IBM License Service in OCP to access the License tracking report.</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
