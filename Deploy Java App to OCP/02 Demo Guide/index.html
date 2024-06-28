@@ -381,9 +381,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-create-docker-container-image" class="md-nav__link">
+  <a href="#5-create-the-docker-container-image" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Create Docker container image
+      5 Create the Docker container image
     </span>
   </a>
   
@@ -594,9 +594,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-create-docker-container-image" class="md-nav__link">
+  <a href="#5-create-the-docker-container-image" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Create Docker container image
+      5 Create the Docker container image
     </span>
   </a>
   
@@ -803,7 +803,7 @@
 <p><img alt="" src="../_attachments/image048.png"></p>
 </li>
 </ol>
-<h3 id="5-create-docker-container-image">5    Create Docker container image</h3>
+<h3 id="5-create-the-docker-container-image">5    Create the Docker container image</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Talking Points
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>To deploy the Mod Resorts app in Liberty on container, I need to build a container image for the app first. In this task, I am going to leverage the updated migration bundle artifices, and create a Docker container for the Mod Resorts app. I will show how easy it is to deploy the app in a local Docker container using the migration bundle artifices from Transformation Advisor.
@@ -816,32 +816,32 @@
 </code></pre></div>
 <ol>
 <li>
-<p>From a terminal window, go to the migration bundle directory with command:</p>
+<p>From a terminal window, go to the migration bundle directory with the following command:</p>
 <div class="highlight"><pre><span></span><code>cd /home/techzone/Downloads/modresorts10war.ear_migrationBundle-demo_ready
 </code></pre></div>
 </li>
 <li>
-<p>Build Docker image with command:</p>
+<p>Build Docker image with the following command:</p>
 <div class="highlight"><pre><span></span><code>docker build -f ./Containerfile --tag default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009 .
 </code></pre></div>
 <p>The Docker image is built.</p>
 <p><img alt="" src="../_attachments/image049.png"> </p>
-<p><strong>Note</strong>: The first time to build the Docker image, it will take a longer time because it needs to download all the artifacts to the local demo VM. After that, each build will only pull down the updated artifacts, so the process will be much fast. Therefore, it is recommended to run the command to build the image first before doing the client facing demo to save time.</p>
+<p><strong>Note</strong>: It can take some time to build the Docker for the  first time, because the artifact must all be downloaded to the demo VM. Each subsequent build will be quicker as only the updated artifacts must be downloaded.</p>
 </li>
 <li>
-<p>To verify the Docker image, run the command below:</p>
+<p>To verify the Docker image, run the following command:</p>
 <div class="highlight"><pre><span></span><code>docker images | grep resorts
 </code></pre></div>
 <p>You see that the Docker image is created.</p>
 <p><img alt="" src="../_attachments/image050.png"> </p>
 </li>
 <li>
-<p>Now you start the app container with the Docker image with the following command:</p>
+<p>After the Docker image is created, start the app container by using the following command:</p>
 <div class="highlight"><pre><span></span><code>docker run -d --rm -p 9080:9080 --name resorts default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
 </code></pre></div>
 </li>
 <li>
-<p>To verify the container is running, issue the following command:</p>
+<p>Run the following command to verify that the container is running:</p>
 <div class="highlight"><pre><span></span><code>docker ps | grep resorts
 </code></pre></div>
 <p>You see that the container is running.</p>
