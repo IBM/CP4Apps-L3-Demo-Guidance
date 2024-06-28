@@ -601,7 +601,7 @@
 <p>The demo environment runs in IBM Cloud. You can reserve the environment by using the following steps:</p>
 <ol>
 <li>
-<p>Launch the IBM Technology Zone Create a reservation <a href="https://techzone.ibm.com/my/reservations/create/65eb652a747d7a00108fb5db">URL</a></p>
+<p>Launch the IBM Technology Zone Create a reservation <a href="https://techzone.ibm.com/my/reservations/create/65eb652a747d7a00108fb5db">URL</a>.</p>
 </li>
 <li>
 <p>Use your IBM ID to login to the IBM Technology Zone, the Create a reservation page is displayed.</p>
@@ -615,8 +615,8 @@
 <li>
 <p>Follow the on-screen dialog to reserve an environment in an IBM Cloud data center in the closest Geography (US-Central, EMEA, Asia Pacific).</p>
 <ul>
-<li>The environment name should be pre-filled with <strong>Liberty Container Deployment with CP4Apps on OpenShift</strong> </li>
-<li>Purpose: <strong>Education</strong> </li>
+<li>Accept the default environment name as <strong>Liberty Container Deployment with CP4Apps on OpenShift</strong> </li>
+<li>Purpose: select <strong>Education</strong> </li>
 <li>Description: Enter a description. The field is required </li>
 <li>Preferred Geography: Choose an IBM Cloud datacenter in the closest geography (US, EMEA, Asia Pacific) </li>
 <li>End date and time: Use the calendar widget and select the maximum date available and select a time of day for reservation to expire and select a timezone nearest to you. </li>
@@ -624,7 +624,7 @@
 </ul>
 </li>
 <li>
-<p>Once complete, check the <strong>agreement box</strong> (<strong>A</strong>) and click on the <strong>Submit</strong> (<strong>B</strong>) button.</p>
+<p>When entered all reservation information as described above, check the <strong>agreement box</strong> (<strong>A</strong>) and click on the <strong>Submit</strong> (<strong>B</strong>) button.</p>
 </li>
 </ol>
 <p><img alt="" src="../_attachments/image002.png"> </p>
@@ -669,13 +669,13 @@
 <ol>
 <li>
 <p>You can resize the viewable area by using the noVNC Settings options to resize the virtual desktop to fit your screen.</p>
-<p>a.    From the demo VM, click the <strong>twisty</strong> (<strong>A</strong>) on the noVNC control pane to open the menu. </p>
+<p>a.    From the demo VM, expand the <strong>noVNC control pane</strong> (<strong>A</strong>) to open the menu. </p>
 <p><img alt="" src="../_attachments/image012.png"></p>
-<p>b.    To increase the visible area, click the <strong>Settings</strong> (<strong>A</strong>) icon and select <strong>Remote Resizing</strong> (<strong>B</strong>) from the Scaling Mode dropdown box.</p>
+<p>b.    To increase the visible area, click the <strong>Settings</strong> (<strong>A</strong>) and click <strong>Remote Resizing</strong> (<strong>B</strong>) from the Scaling Mode dropdown box.</p>
 <p><img alt="" src="../_attachments/image013.png"></p>
 </li>
 <li>
-<p>You can copy / paste text from the Demo guide into the Demo environment by using the clipboard in the noVNC viewer. </p>
+<p>You can copy text from the Demo guide into the Demo environment by using the clipboard in the noVNC viewer. </p>
 <p>a.    Copy the text from the Demo guide that you want to paste into the Demo environment.</p>
 <p>b.    Click the <strong>Clipboard</strong> (<strong>A</strong>) icon and paste the text into the noVNC <strong>Clipboard</strong> (<strong>B</strong>).</p>
 <p><img alt="" src="../_attachments/image014.png"> </p>
@@ -686,7 +686,7 @@
 <h3 id="5-configure-the-demo-environment">5    Configure the demo environment</h3>
 <ol>
 <li>
-<p>Clone GitHub demo artifacts</p>
+<p>Clone GitHub demo artifacts.</p>
 <p>To run the demo, you need to clone the GitHub demo artifacts to the Demo VM environment first.</p>
 <p>a.    Click the <strong>terminal</strong> (<strong>A</strong>) icon.</p>
 <p><img alt="" src="../_attachments/image015.png"></p>
@@ -694,7 +694,7 @@
 <div class="highlight"><pre><span></span><code>cd /home/techzone
 git clone https://github.com/IBMTechSales/appmod-pot-labfiles.git
 </code></pre></div>
-<p>Once it is done, the local demo artifacts repo will be at the <strong>/home/techzone/appmod-pot-labfiles</strong> directory on the demo VM desktop.</p>
+<p>When it is done, the local demo artifacts repo will be at the <strong>/home/techzone/appmod-pot-labfiles</strong> directory on the demo VM desktop.</p>
 <p>c.    Copy the demo zip file to the <strong>/home/techzone/Downloads</strong> directory and unpack it by running the following commands:</p>
 <div class="highlight"><pre><span></span><code>cp /home/techzone/appmod-pot-labfiles/demo/modresorts10war.ear_migrationBundle-demo_ready.zip /home/techzone/Downloads
 
@@ -702,7 +702,7 @@ unzip -d ~/Downloads /home/techzone/Downloads/modresorts10war.ear_migrationBundl
 </code></pre></div>
 </li>
 <li>
-<p>Configure Transformation Advisor</p>
+<p>Configure Transformation Advisor.</p>
 <p>a. Launch Transformation Advisor from the terminal window with the command:</p>
 <div class="highlight"><pre><span></span><code>transformation-advisor-local-3.8.1/launchTransformationAdvisor.sh
 </code></pre></div>
@@ -710,13 +710,13 @@ unzip -d ~/Downloads /home/techzone/Downloads/modresorts10war.ear_migrationBundl
 <p><img alt="" src="../_attachments/image016.png"></p>
 <p>The Transformation Advisor is started after a few minutes.</p>
 <p><img alt="" src="../_attachments/image017.png"></p>
-<p>c. Access the Transformation Advisor page form a web browser by double-clicking the <strong>browser</strong> (<strong>A</strong>) icon on the desktop.</p>
+<p>c. Access the Transformation Advisor page from a web browser by double-clicking the <strong>browser</strong> (<strong>A</strong>) icon on the desktop.</p>
 <p><img alt="" src="../_attachments/image018.png"></p>
 <p>d. Click the <strong>Transformation Advisor</strong> (<strong>A</strong>) bookmark in the browser to access it.</p>
 <p><img alt="" src="../_attachments/image019.png"></p>
 <p>The Transformation Advisor page is displayed.</p>
 <p><img alt="" src="../_attachments/image020.png"> </p>
-<p>e.    Create a workspace in Transformation Advisor by clicking Create new (A).</p>
+<p>e.    Create a workspace in Transformation Advisor by clicking <strong>Create new</strong> (<strong>A</strong>).</p>
 <p><img alt="" src="../_attachments/image021.png"></p>
 <p>f.    Type <strong>Evaluation</strong> (<strong>A</strong>) as the workspace name and click <strong>Create</strong> (<strong>B</strong>).</p>
 <p><img alt="" src="../_attachments/image022.png"> </p>
