@@ -678,7 +678,7 @@
 <p><img alt="" src="../_attachments/image031.png"></p>
 <p>The commands used for this demo start from line 71 of the file.</p>
 <p><img alt="" src="../_attachments/image032.png"></p>
-<p>In this demo, we are going to showcase how to rapidly deploy and configure the Mod Resorts app in Liberty running on an OpenShift Container Platform (OCP). We will show how easy it is to use IBM Transformation Advisors migration artifacts to accelerate the steps of the modernization journey, including build, configuration, and deployment. It will demonstrate that how quickly clients can realize the values from WebSphere Liberty and OCP, which provide greater deployment flexibility and operational efficiencies across the enterprise. We are also going to show how to config and use IBM License Service in OCP.</p>
+<p>In this demo, you are going to showcase how to rapidly deploy and configure the Mod Resorts app in Liberty running on an OpenShift Container Platform (OCP). you will show how easy it is to use IBM Transformation Advisors migration artifacts to accelerate the steps of the modernization journey, including build, configuration, and deployment. It will demonstrate that how quickly clients can realize the values from WebSphere Liberty and OCP, which provide greater deployment flexibility and operational efficiencies across the enterprise. You are also going to show how to config and use IBM License Service in OCP.</p>
 <p>The objectives of this demo are to:</p>
 <ul>
 <li>Learn how to use the Transformation Advisor migration bundle to build the application into a container image</li>
@@ -721,7 +721,7 @@
 <p><img alt="" src="../_attachments/image034.png"> </p>
 <p>The Evaluation workspace is displayed.</p>
 <p><img alt="" src="../_attachments/image035.png"> </p>
-<p>Notice that only <strong>WebSphere Liberty</strong> is selected as <strong>Migration target</strong> which is the platform we want to move the Mod Resorts app to.</p>
+<p>Notice that only <strong>WebSphere Liberty</strong> is selected as <strong>Migration target</strong> which is the platform you want to move the Mod Resorts app to.</p>
 </li>
 </ol>
 <h3 id="3-download-transformation-advisor-migration-plan">3    Download Transformation Advisor migration plan</h3>
@@ -775,7 +775,7 @@
 <p><img alt="" src="../_attachments/image039.png"></p>
 </li>
 <li>
-<p>Review the contents in the directory. The migration bundle has all artifacts that we need to deploy the app to Liberty in container and to a Kubernetes environment. The <strong>Containerfile</strong> is the one to be used to create the Docker image.</p>
+<p>Review the contents in the directory. The migration bundle has all artifacts that you need to deploy the app to Liberty in container and to a Kubernetes environment. The <strong>Containerfile</strong> is the one to be used to create the Docker image.</p>
 <p><img alt="" src="../_attachments/image040.png"></p>
 </li>
 <li>
@@ -836,7 +836,7 @@
 <p><img alt="" src="../_attachments/image050.png"> </p>
 </li>
 <li>
-<p>Now we start the app container with the Docker image with the following command:</p>
+<p>Now you start the app container with the Docker image with the following command:</p>
 <div class="highlight"><pre><span></span><code>docker run -d --rm -p 9080:9080 --name resorts default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
 </code></pre></div>
 </li>
@@ -858,7 +858,7 @@
 <p><img alt="" src="../_attachments/image054.png"> </p>
 <p>The weather information is San Francisco is showing.</p>
 <p><img alt="" src="../_attachments/image055.png"> </p>
-<p>Now we have tested and verified that the app is running on Liberty container. What we will do next is to deploy the app in Liberty container to OCP.</p>
+<p>Now you have tested and verified that the app is running on Liberty container. What you will do next is to deploy the app in Liberty container to OCP.</p>
 </li>
 </ol>
 <h3 id="6-deploy-to-openshift-environment">6    Deploy to OpenShift environment</h3>
@@ -914,33 +914,33 @@
 <p><strong>Note</strong>: It might take a few minutes to upload the image to the registry.</p>
 </li>
 <li>
-<p>After the image is uploaded to the OCP image registry, we can verify it with command:</p>
+<p>After the image is uploaded to the OCP image registry, you can verify it with command:</p>
 <div class="highlight"><pre><span></span><code>oc get is
 </code></pre></div>
 <p><img alt="" src="../_attachments/image060.png"> </p>
 </li>
 <li>
-<p>We can also verify it from the OCP web console.</p>
+<p>You can also verify it from the OCP web console.</p>
 <p>a.  Access the OCP web console by clicking the <strong>OpenShift Console</strong> (<strong>A</strong>) bookmark in the web browser.</p>
 <p><img alt="" src="../_attachments/image061.png"> </p>
 <p>b.  Accept the default Username/Password and click <strong>Log in</strong> (<strong>A</strong>).</p>
 <p><img alt="" src="../_attachments/image062.png"></p>
 <p>After logged in, the OCP web console Home page is displayed.</p>
 <p><img alt="" src="../_attachments/image063.png"> </p>
-<p>c.  Click <strong>Builds</strong> (<strong>A</strong>), select <strong>ImageStreams</strong> (<strong>B</strong>) and select <strong>resorts project</strong> (<strong>C</strong>), we can see that the app image is listed.</p>
+<p>c.  Click <strong>Builds</strong> (<strong>A</strong>), select <strong>ImageStreams</strong> (<strong>B</strong>) and select <strong>resorts project</strong> (<strong>C</strong>), you can see that the app image is listed.</p>
 <p><img alt="" src="../_attachments/image064.png">    </p>
 <p>d.  Click the <strong>app image link</strong> (<strong>A</strong>) to view its details.</p>
 <p><img alt="" src="../_attachments/image065.png"> </p>
 <p>The app image detail page is displayed.</p>
 <p><img alt="" src="../_attachments/image066.png"> </p>
-<p>Now we have verified that the app image is uploaded, we are ready to deploy the app to OCP using the YAML artifacts generated by Transformation Advisor.</p>
+<p>Now you have verified that the app image is uploaded, you are ready to deploy the app to OCP using the YAML artifacts generated by Transformation Advisor.</p>
 </li>
 <li>
-<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Pods</strong> (<strong>B</strong>), we can see that currently we do not have any app pods running.</p>
+<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Pods</strong> (<strong>B</strong>), you can see that currently you do not have any app pods running.</p>
 <p><img alt="" src="../_attachments/image067.png"></p>
 </li>
 <li>
-<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Deployment</strong> (<strong>B</strong>), we can see that currently we do not have any app deployment yet.</p>
+<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Deployment</strong> (<strong>B</strong>), you can see that currently you do not have any app deployment yet.</p>
 <p><img alt="" src="../_attachments/image068.png"></p>
 </li>
 <li>
@@ -955,21 +955,21 @@ oc apply -n resorts -k overlays/resorts_1.0
 <p>This is a quick command run. Please note that the <strong>oc apply</strong> command is using the kustomize tool with a <strong>-k</strong> option and it is pointing to the <strong>overlays</strong> directory and a sub directory named <strong>resource_1.0</strong>, so it uses the YAML files in that overlay directory in addition to the base configuration that is in the <strong>base</strong> directory of the migration bundle.</p>
 </li>
 <li>
-<p>To check the status of the deployment, we can run command:</p>
+<p>To check the status of the deployment, you can run command:</p>
 <div class="highlight"><pre><span></span><code>oc get pods
 </code></pre></div>
-<p>You see that 8 pods are created and they are starting to run. We might need to run the same command a few times until all 8 pods are up running.</p>
+<p>You see that 8 pods are created and they are starting to run. You might need to run the same command a few times until all 8 pods are up running.</p>
 <p><img alt="" src="../_attachments/image070.png"> </p>
 </li>
 <li>
-<p>Once these pods are up and running, we need to get the application route so we can access it. To get the route, run command:</p>
+<p>Once these pods are up and running, you need to get the application route so you can access it. To get the route, run command:</p>
 <div class="highlight"><pre><span></span><code>oc get route -n resorts
 </code></pre></div>
 <p>You see that the app route is: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu</strong></p>
 <p><img alt="" src="../_attachments/image071.png"></p>
 </li>
 <li>
-<p>With the app route information, we can access the Mod Resorts app in OCP from a web browser by entering the URL as: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu/resorts</strong> (<strong>A</strong>).</p>
+<p>With the app route information, you can access the Mod Resorts app in OCP from a web browser by entering the URL as: <strong>http://modresorts10war-resorts.apps.ocp.ibm.edu/resorts</strong> (<strong>A</strong>).</p>
 <p><img alt="" src="../_attachments/image072.png"></p>
 <p>You see that the <strong>Mod Resorts</strong> app has been successfully deployed to the OCP environment and is running on the OCP now.</p>
 </li>
@@ -1007,19 +1007,19 @@ oc apply -n resorts -k overlays/resorts_1.0
 <p><img alt="" src="../_attachments/image075.png"></p>
 <p>The content of the YAML file is displayed.</p>
 <p><img alt="" src="../_attachments/image076.png"> </p>
-<p>As we can see from this configuration file, the deployment replica is set as 8. The app image is pointing to the image that we pushed to the OCP image registry. The license tracking information is added as Cloud Pak for Application and Liberty Core and the CPU resource limit is set at 1000m.</p>
+<p>As you can see from this configuration file, the deployment replica is set as 8. The app image is pointing to the image that you pushed to the OCP image registry. The license tracking information is added as Cloud Pak for Application and Liberty Core and the CPU resource limit is set at 1000m.</p>
 </li>
 <li>
-<p>Now we can take a look at the license tracing service report about our license usage. To do it, go to the web browser and click the <strong>IBM License Service Status-with token</strong> (<strong>A</strong>) bookmark.</p>
+<p>Now you can take a look at the license tracing service report about our license usage. To do it, go to the web browser and click the <strong>IBM License Service Status-with token</strong> (<strong>A</strong>) bookmark.</p>
 <p><img alt="" src="../_attachments/image077.png"> </p>
-<p><strong>Note</strong>: we can also enter the IBM License Service Status-with token URL as: 
+<p><strong>Note</strong>: you can also enter the IBM License Service Status-with token URL as: 
 <strong>https://ibm-licensing-service-instance-ibm-common-services.apps.ocp.ibm.edu/status?token=dnwsnLNwvQ9ie4o9U5mpRhoG</strong></p>
 <p>The License Service Report is displayed.</p>
 <p><img alt="" src="../_attachments/image078.png"> </p>
-<p>The report shows that Liberty Core is running in 8 pods with one CPU per pod, so in total we consume 8 CPUs and the total Cloud Pak for Application license consumed is 1.</p>
+<p>The report shows that Liberty Core is running in 8 pods with one CPU per pod, so in total you consume 8 CPUs and the total Cloud Pak for Application license consumed is 1.</p>
 </li>
 <li>
-<p>Let’s see that happened to the report if we remove the Mod Resorts app deployment from the OCP. To do it, run the following command from the terminal window to delete the deployment:</p>
+<p>Let’s see that happened to the report if you remove the Mod Resorts app deployment from the OCP. To do it, run the following command from the terminal window to delete the deployment:</p>
 <div class="highlight"><pre><span></span><code>oc delete -n resorts -k overlays/resorts_1.0
 </code></pre></div>
 <p><img alt="" src="../_attachments/image079.png"></p>
@@ -1027,12 +1027,12 @@ oc apply -n resorts -k overlays/resorts_1.0
 <li>
 <p>Now the Mod Resorts app deployment is deleted, let’s see what happened in the License Service Report. Go back to the browser window and <strong>refresh</strong> (<strong>A</strong>) the License Service Report page.</p>
 <p><img alt="" src="../_attachments/image080.png"> </p>
-<p>As we can see there is nothing listed in the report anymore.</p>
+<p>As you can see there is nothing listed in the report anymore.</p>
 <p><img alt="" src="../_attachments/image081.png"> </p>
 </li>
 </ol>
 <h3 id="8-summary">8    Summary</h3>
-<p>In this demo, we learned how to move a WebSphere app from WebSphere traditional to WebSphere Liberty container and deploy it to OCP using the deployment artifacts produced by Transformation Advisor in its migration bundle.</p>
+<p>In this demo, you learned how to move a WebSphere app from WebSphere traditional to WebSphere Liberty container and deploy it to OCP using the deployment artifacts produced by Transformation Advisor in its migration bundle.</p>
 <p>You explored the options for deployment:</p>
 <ul>
 <li>Liberty as an image running in a local container.</li>
