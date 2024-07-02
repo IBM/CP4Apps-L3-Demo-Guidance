@@ -806,15 +806,21 @@
 5.  Analyze the recommendations
 6.  Summary</p>
 <h3 id="2-access-transformation-advisor">2    Access Transformation Advisor</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Talking Points
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>In the demo scenario, I am going to use Transformation Advisor to evaluate my migration effort in which I want to migrate our Customer Order Services application from traditional WebSphere V855 to the cloud-ready new runtime with minimal code changes.
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>To use the Transformation Advisor (TA), I need to create a Workspace first. 
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>A Workspace is a designated area that houses the migration recommendations provided by Transformation Advisor against our application server environment. We can name and organize these however we want, whether it is by business application, location or teams. 
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>In the Transformation Advisor home page, I use Create new button to create a new Workspace. In this demo, I create a Workspace called CustomerOrderServices.
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points**
+
+In the demo scenario, I am going to use Transformation Advisor to evaluate my migration effort in which I want to migrate our Customer Order Services application from traditional WebSphere V855 to the cloud-ready new runtime with minimal code changes.
+To use the Transformation Advisor (TA), I need to create a Workspace first. 
+
+A Workspace is a designated area that houses the migration recommendations provided by Transformation Advisor against our application server environment. We can name and organize these however we want, whether it is by business application, location or teams. 
+
+In the Transformation Advisor home page, I use Create new button to create a new Workspace. In this demo, I create a Workspace called CustomerOrderServices.
+
+</div>
+</div>
+
 <ol>
 <li>
 <p>If the Transformation Advisor is not started yet, start it by running the following scommands in a terminal window Otherwise skip this step.</p>
@@ -847,23 +853,29 @@
 </li>
 </ol>
 <h3 id="3-download-the-data-collector">3    Download the Data Collector</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Talking Points
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>In the Transformation Advisor Workspace page, two utilities, Data Collector utility and Data Uploader utility, are listed. 
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Transformation Advisor offers the Data Collector utility for getting the application data from the Java application server running in the client’s environment. This Java utility can be downloaded from the Transformation Advisor web page as we see here in our Workspace page. We can download and run this utility against our Java application server to collect all application data on the server. The utility can send the collected data directly back to TA, if TA is in the same network as the application server. It also saves the collected data in a zip file which can be uploaded to a remote TA using the Data Uploader utility.
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>After the Workspace is created, I have options to either download the Data Collector utility or upload an existing data file. 
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>In this demo, I will first show how to use the Data Collector utility. First, I go to the download page. In the Download page, I can download different versions of the utility based on my application server operating system. The page also shows the information on how to use the utility in the command line to collect application data from WebSphere, WebLogic and Tomcat servers. 
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>I start to download the utility and save it in my local workstation. This result is a file with a name like transformationadvisor-Linux_CustomerOrderServices.tgz
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>being downloaded and stored in the /home/ibmdemo/Downloads directory.
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>Next, I copy the command for extracting the Data Collector tar file from the Transformation Advisor download page, navigate to the /home/ibmdemo/Downloads directory from the terminal window and paste/run the extracting command. 
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>The Data Collector is now extracted to the /home/ibmdemo/Downloads/transformationadvisor-2.4.4 directory. I can go to the directory with cd command. Now I am ready to run the Data Collector tool.
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points**
+
+In the Transformation Advisor Workspace page, two utilities, Data Collector utility and Data Uploader utility, are listed. 
+
+Transformation Advisor offers the Data Collector utility for getting the application data from the Java application server running in the client’s environment. This Java utility can be downloaded from the Transformation Advisor web page as we see here in our Workspace page. We can download and run this utility against our Java application server to collect all application data on the server. The utility can send the collected data directly back to TA, if TA is in the same network as the application server. It also saves the collected data in a zip file which can be uploaded to a remote TA using the Data Uploader utility.
+
+After the Workspace is created, I have options to either download the Data Collector utility or upload an existing data file. 
+
+In this demo, I will first show how to use the Data Collector utility. First, I go to the download page. In the Download page, I can download different versions of the utility based on my application server operating system. The page also shows the information on how to use the utility in the command line to collect application data from WebSphere, WebLogic and Tomcat servers. 
+
+I start to download the utility and save it in my local workstation. This result is a file with a name like transformationadvisor-Linux_CustomerOrderServices.tgz
+being downloaded and stored in the /home/ibmdemo/Downloads directory.
+
+Next, I copy the command for extracting the Data Collector tar file from the Transformation Advisor download page, navigate to the **/home/ibmdemo/Downloads** directory from the terminal window and paste/run the extracting command. 
+
+The Data Collector is now extracted to the **/home/ibmdemo/Downloads/transformationadvisor-2.4.4** directory. I can go to the directory with cd command. Now I am ready to run the Data Collector tool.
+
+</div>
+</div>
+
 <ol>
 <li>
 <p>Click <strong>Download</strong> (<strong>A</strong>).</p>
@@ -890,14 +902,19 @@
 </li>
 </ol>
 <h3 id="4-review-the-command-to-run-the-data-collector">4    Review the command to run the Data Collector</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Talking Points
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Now the Data Collector is installed. I can run the Data Collector against my application server. The Transformation Advisor Data Collector Download page provides detail information on how to run the tool. 
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Transformation Advisor Data Collector can collect data from different application server runtimes, including WebSphere, WebLogic, JBoss, Tomcat and MQ.  
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Transformation Advisor Data Collector can also narrow the analysis scope at different levels, either on application and configuration, or on application only or on ear/war files. 
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points**
+
+Now the Data Collector is installed. I can run the Data Collector against my application server. The Transformation Advisor Data Collector Download page provides detail information on how to run the tool. 
+
+Transformation Advisor Data Collector can collect data from different application server runtimes, including WebSphere, WebLogic, JBoss, Tomcat and MQ.  
+
+Transformation Advisor Data Collector can also narrow the analysis scope at different levels, either on application and configuration, or on application only or on ear/war files. 
+</div>
+</div>
+
 <ol>
 <li>
 <p>Go back to Transformation Advisor Data Collector Download page.</p>
@@ -914,15 +931,19 @@
 </li>
 </ol>
 <h3 id="5-upload-the-data-collector-results">5    Upload the Data Collector results</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Talking Points
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Transformation Advisor is updated on a regular base to include findings from the field. In addition, Liberty also gets more and more capabilities to ease the migration. Therefore, it is always good to use the latest Transformation Advisor collector create a new workspace.
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>But the execution of the collector can take some time to create the zip file.  
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>In this demo, I have a pre-created Data Collector zip file, now I need to upload it to Transformation Advisor for analysis. To do it, I first launch the Transformation Advisor Upload utility to add the file. Next, I use the utility file explorer to navigate to the desktop folder /home/ibmdemo/openshift-workshop-was/labs/Openshift/TransformationAdvisor where the zip file is stored. Then I select the zip file and upload it to Transformation Advisor. After a few moments the upload of the data collector results will be completed. 
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Once the Data Collector Results have been uploaded to Transformation Advisor, a set of recommendations will be created and shown on the Recommendations page as shown in the screenshot below.
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+**Talking Points**
+
+Transformation Advisor is updated on a regular base to include findings from the field. In addition, Liberty also gets more and more capabilities to ease the migration. Therefore, it is always good to use the latest Transformation Advisor collector create a new workspace.
+
+But the execution of the collector can take some time to create the zip file.  
+
+In this demo, I have a pre-created Data Collector zip file, now I need to upload it to Transformation Advisor for analysis. To do it, I first launch the Transformation Advisor Upload utility to add the file. Next, I use the utility file explorer to navigate to the desktop folder /home/ibmdemo/openshift-workshop-was/labs/Openshift/TransformationAdvisor where the zip file is stored. Then I select the zip file and upload it to Transformation Advisor. After a few moments the upload of the data collector results will be completed. 
+Once the Data Collector Results have been uploaded to Transformation Advisor, a set of recommendations will be created and shown on the Recommendations page as shown in the screenshot below.
+</div>
+</div>
+
 <ol>
 <li>
 <p>From the top of the Data collector page, click the <strong>Workload type</strong> (<strong>A</strong>).</p>
@@ -948,63 +969,73 @@
 </li>
 </ol>
 <h3 id="6-add-open-liberty-as-another-migration-target">6 Add Open Liberty as another migration target</h3>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Talking Points
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>On the Recommendations page, the target environment is set to Liberty Runtimes, which is the default target environment.
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>The Recommendations page also shows the summary analysis results for all the apps in the AppSrv01 environment to be moved to a Liberty environment. 
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>For each app, you can see these results:
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>* Java Application Name
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>* Collection/Profile
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>* Complexity
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>* Issues
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>* Common code files
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>* Estimated development cost in days
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>For example, if we want to move the modresorts application to a Liberty runtime, the complexity level is Simple, which indicates that the application code does not need to be changed before it can be moved to Liberty. The estimated development effort is zero day because no code change is required.
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>Transformation Advisor can provide recommendations for different targets at the same time. I will add Open Liberty as another migration target to demonstrate it. 
-</code></pre></div>
-1.  Click <strong>Migration targets dropdown menu</strong> (<strong>A</strong>), check the <strong>Open Liberty box</strong> (<strong>B</strong>) and close the dropdown menu.
-<div class="highlight"><pre><span></span><code>![](_attachments/image037.png)
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+**Talking Points**
 
-The Transformation Advisor recommendations for both migration targets are now listed.
+On the Recommendations page, the target environment is set to Liberty Runtimes, which is the default target environment.
+The Recommendations page also shows the summary analysis results for all the apps in the AppSrv01 environment to be moved to a Liberty environment. 
 
-![](_attachments/image038.png)
-</code></pre></div>
+For each app, you can see these results:
+
+* Java Application Name
+* Collection/Profile
+* Complexity
+* Issues
+* Common code files
+* Estimated development cost in days
+
+For example, if we want to move the modresorts application to a Liberty runtime, the complexity level is Simple, which indicates that the application code does not need to be changed before it can be moved to Liberty. The estimated development effort is zero day because no code change is required.
+
+Transformation Advisor can provide recommendations for different targets at the same time. I will add Open Liberty as another migration target to demonstrate it. 
+
+</div>
+</div>
+<ol>
+<li>
+<p>Click <strong>Migration targets dropdown menu</strong> (<strong>A</strong>), check the <strong>Open Liberty box</strong> (<strong>B</strong>) and close the dropdown menu.</p>
+<p><img alt="" src="../_attachments/image037.png"></p>
+<p>The Transformation Advisor recommendations for both migration targets are now listed.</p>
+<p><img alt="" src="../_attachments/image038.png"></p>
+</li>
+</ol>
 <h3 id="7-analyze-the-recommendations-for-open-liberty">7    Analyze the recommendations for Open Liberty</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Talking Points 
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Let’s focus on the Transformation Advisor recommendations for the Customer Order Services (CustomerOrderServicesApp.ear) application.
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>Transformation Advisor estimates that the effort to move the Customer Order Services application from traditional WebSphere V855 to Open Liberty (which supports JEE7, Java EE 8 and more) will take 8 days of the development time. 
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Let’s look at the analysis details for the Customer Order Services application on Open Liberty. 
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>First, we want to review the analysis results in the Complexity Rules section. As we can see, Transformation Advisor has determined that code changes may be required before this application will run on Open Liberty.
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>Next, we move to the Issues details section. We can see that Transformation Advisor has detected a critical technology issue with accessing the Apache Wink APIs as well as several issues around JPA. In the section about External dependencies, we can see that the application requires access to a database and to Java EE security. 
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>In the bottom section of the details page, Transformation Advisor provides three reports with more analysis results, including:
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>* Technology Report – provides details on which IBM platforms support the technologies used by the applications.
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>* Inventory Report – lists a high-level inventory of the content and structure of each application, plus information about potential deployment problems and performance considerations.
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>* Analysis Report – shows potential issues, their severity and possible solutions.
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>In this demo, we first take a look at the Technology Report, which lists all Java technologies the application used and whether these technologies are supported by a specific runtime from Open Liberty to WebSphere traditional for z/OS. The information is used to determine whether a particular WebSphere product is suitable for the application analyzed.
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>Then, we look at the Inventory Report, which gives us insight about the application structure, potential deployment problems and more.
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>Finally, we look at the Analysis Report. The report shows the results of the migration rules that were executed by the Data Collector and returned results. 
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>Let’s go to the Severe Rules section and review the Show rule help details. The Rule Help section provides recommended solutions on how to fix the issues.
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>In this section, several recommendations are listed:
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>* The Apache Wink Client APIs are not available and org.codehaus.jackson packages are not available - The org.apache.wink.client packages are not available to JAX-RS applications that use the WAS Java EE 7 JAX-RS 2.0 implementation. The recommendation is to use the standard javax.ws.rs.client APIs where possible, alternatively package the API with the application. Similar tasks are required with org.codehaus.jackson packages.
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>* Disable the persistence unit second-level cache and OpenJPA and WebSphere JPA configuration properties must be migrated – As Open Liberty does not support JPA 2.0 which implements OpenJPA, the recommendation is to migrate to JPA 2.1 which implements EclipseLink JPA. This introduces several changes in the JPA configuration which are documented here.
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points** 
+
+Let’s focus on the Transformation Advisor recommendations for the Customer Order Services (CustomerOrderServicesApp.ear) application.
+
+Transformation Advisor estimates that the effort to move the Customer Order Services application from traditional WebSphere V855 to Open Liberty (which supports JEE7, Java EE 8 and more) will take 8 days of the development time. 
+
+Let’s look at the analysis details for the Customer Order Services application on Open Liberty. 
+
+First, we want to review the analysis results in the Complexity Rules section. As we can see, Transformation Advisor has determined that code changes may be required before this application will run on Open Liberty.
+
+Next, we move to the Issues details section. We can see that Transformation Advisor has detected a critical technology issue with accessing the Apache Wink APIs as well as several issues around JPA. In the section about External dependencies, we can see that the application requires access to a database and to Java EE security. 
+
+In the bottom section of the details page, Transformation Advisor provides three reports with more analysis results, including:
+
+* Technology Report – provides details on which IBM platforms support the technologies used by the applications.
+* Inventory Report – lists a high-level inventory of the content and structure of each application, plus information about potential deployment problems and performance considerations.
+* Analysis Report – shows potential issues, their severity and possible solutions.
+
+In this demo, we first take a look at the Technology Report, which lists all Java technologies the application used and whether these technologies are supported by a specific runtime from Open Liberty to WebSphere traditional for z/OS. The information is used to determine whether a particular WebSphere product is suitable for the application analyzed.
+
+Then, we look at the Inventory Report, which gives us insight about the application structure, potential deployment problems and more.
+
+Finally, we look at the Analysis Report. The report shows the results of the migration rules that were executed by the Data Collector and returned results. 
+
+Let’s go to the Severe Rules section and review the Show rule help details. The Rule Help section provides recommended solutions on how to fix the issues.
+
+In this section, several recommendations are listed:
+
+* The Apache Wink Client APIs are not available and org.codehaus.jackson packages are not available - The org.apache.wink.client packages are not available to JAX-RS applications that use the WAS Java EE 7 JAX-RS 2.0 implementation. The recommendation is to use the standard javax.ws.rs.client APIs where possible, alternatively package the API with the application. Similar tasks are required with org.codehaus.jackson packages.
+* Disable the persistence unit second-level cache and OpenJPA and WebSphere JPA configuration properties must be migrated – As Open Liberty does not support JPA 2.0 which implements OpenJPA, the recommendation is to migrate to JPA 2.1 which implements EclipseLink JPA. This introduces several changes in the JPA configuration which are documented here.
+</div>
+</div>
+
 <ol>
 <li>
 <p>Click the <strong>CustomerOrderServicesApp.ear</strong> (<strong>A</strong>) application name on the Open Liberty row.</p>
@@ -1041,25 +1072,31 @@ The Transformation Advisor recommendations for both migration targets are now li
 </li>
 </ol>
 <h3 id="8-analyze-the-recommendations-for-websphere-liberty">8    Analyze the recommendations for WebSphere Liberty</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Talking Points 
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Let’s focus on the Transformation Advisor recommendations for the Customer Order Services (CustomerOrderServicesApp.ear) application in context of WebSphere Liberty.
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Transformation Advisor estimates that the effort to move the Customer Order Services application from traditional WebSphere V855 to WebSphere Liberty (which supports JEE6 partly, Java EE 7 and 8 and more) will take 0.5 days of the development time. 
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Let’s look at the analysis details for the Customer Order Services application to see why there are less migration efforts for WebSphere Liberty than for Open Liberty.
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>First, we want to review the analysis results in Complexity Rules section. As we can see, Transformation Advisor has determined that code changes may be required before this application will run on WebSphere Liberty. But if we move to the Issues details section, we can see that Transformation Advisor has detected only a critical technology issue with accessing the Apache Wink APIs. There are no issues regarding JPA, because WebSphere Liberty other than Open liberty also supports JPA 2.0 and therefore Open JPA. 
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>WebSphere Liberty and Open Liberty, but the Technology Report is different. Therefore, let’s take a look at the Analysis Report. 
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>The report shows the results of the migration rules that were executed by the Data Collector and returned results. 
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>Let’s go to the Severe Rules section and review the Show rule help details. The Rule Help section provides recommended solutions on how to fix the issue.
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>In this section, there is only one recommendation listed:
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>* The use of system provided Apache Wink APIs requires configuration - To use system-provided third-party APIs in Liberty applications, you must configure the applications to include the APIs. In WebSphere Application Server traditional, these APIs are available without configuration. This is a configuration only change and can be achieved by using a classloader definition in the Liberty server.xml file.
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points** 
+
+Let’s focus on the Transformation Advisor recommendations for the Customer Order Services (CustomerOrderServicesApp.ear) application in context of WebSphere Liberty.
+
+Transformation Advisor estimates that the effort to move the Customer Order Services application from traditional WebSphere V855 to WebSphere Liberty (which supports JEE6 partly, Java EE 7 and 8 and more) will take 0.5 days of the development time. 
+
+Let’s look at the analysis details for the Customer Order Services application to see why there are less migration efforts for WebSphere Liberty than for Open Liberty.
+
+First, we want to review the analysis results in Complexity Rules section. As we can see, Transformation Advisor has determined that code changes may be required before this application will run on WebSphere Liberty. But if we move to the Issues details section, we can see that Transformation Advisor has detected only a critical technology issue with accessing the Apache Wink APIs. There are no issues regarding JPA, because WebSphere Liberty other than Open liberty also supports JPA 2.0 and therefore Open JPA. 
+
+WebSphere Liberty and Open Liberty, but the Technology Report is different. Therefore, let’s take a look at the Analysis Report. 
+
+The report shows the results of the migration rules that were executed by the Data Collector and returned results. 
+Let’s go to the Severe Rules section and review the Show rule help details. The Rule Help section provides recommended solutions on how to fix the issue.
+
+In this section, there is only one recommendation listed:
+
+* The use of system provided Apache Wink APIs requires configuration - To use system-provided third-party APIs in Liberty applications, you must configure the applications to include the APIs. In WebSphere Application Server traditional, these APIs are available without configuration. This is a configuration only change and can be achieved by using a classloader definition in the Liberty server.xml file.
+
+</div>
+</div>
+
 <ol>
 <li>
 <p>Go back to the top of the Customer Order Services application on Open Liberty page and click <strong>All Java applications</strong> (<strong>A</strong>) link.</p>
@@ -1089,20 +1126,25 @@ The Transformation Advisor recommendations for both migration targets are now li
 </li>
 </ol>
 <h3 id="9-demonstrate-the-migration-assets">9    Demonstrate the migration assets</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Talking Points 
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Next to recommendations how to migrate the application, Transformation Advisor also provides assets to speed up the deployment by providing a migration plan. This includes the generation of the Liberty configuration file server.xml to deploy the application to Liberty, a pom file to build the application, a Docker file to containerize the application and an Application Custom Resource to deploy the application to Kubernetes. 
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Let’s start with the Liberty configuration. 
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>Based on the analysis of the application ear, Transformation Advisor generates the list of features required by the application. 
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>As the collector not only analyzed the application but also the configuration, it also generates the Liberty configuration definition for the datasource. 
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>To make the application configuration portable, Transformation Advisor uses environment variables for many parts of the configuration. It injects the values retrieved from the current environment. 
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>As Transformation Advisor does not collect any passwords, the variables for the data source as well as for the keystores do not contain any credentials.     
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points** 
+
+Next to recommendations how to migrate the application, Transformation Advisor also provides assets to speed up the deployment by providing a migration plan. This includes the generation of the Liberty configuration file server.xml to deploy the application to Liberty, a pom file to build the application, a Docker file to containerize the application and an Application Custom Resource to deploy the application to Kubernetes. 
+
+Let’s start with the Liberty configuration. 
+
+Based on the analysis of the application ear, Transformation Advisor generates the list of features required by the application. 
+
+As the collector not only analyzed the application but also the configuration, it also generates the Liberty configuration definition for the datasource. 
+
+To make the application configuration portable, Transformation Advisor uses environment variables for many parts of the configuration. It injects the values retrieved from the current environment. 
+
+As Transformation Advisor does not collect any passwords, the variables for the data source as well as for the keystores do not contain any credentials.     
+</div>
+</div>
+
 <ol>
 <li>
 <p>Go back to the Transformation Advisor page, scroll to the top and click the <strong>View migration plan</strong> (<strong>A</strong>). </p>
@@ -1135,10 +1177,15 @@ The Transformation Advisor recommendations for both migration targets are now li
 </li>
 </ol>
 <h3 id="10-explain-the-benefits-of-transformation-advisor-to-containerize-based-traditional-was">10   Explain the benefits of Transformation Advisor to containerize based traditional WAS</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Talking Points 
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>For the customerorderservice application, the migration to WebSphere Liberty seems to be quite easy. But there might be reasons why to stick with WebSphere traditional and just containerize the application. Transformation Advisor provides insight to assess the efforts for a migration to WebSphere traditional v9 container and provides a similar set of reports as for Liberty. In addition, Transformation Advisor provides assets to deploy the application into WAS traditional v9 container, for example the Python scripts to configure WAS traditional and to deploy the application, a Dockerfile to deploy the application into WAS traditional in a container as well as Pipeline resources.
-</code></pre></div>
+<div style="background-color:lightgrey;">
+<div style="margin-left:20px;margin-right:20px">
+
+**Talking Points** 
+
+For the customerorderservice application, the migration to WebSphere Liberty seems to be quite easy. But there might be reasons why to stick with WebSphere traditional and just containerize the application. Transformation Advisor provides insight to assess the efforts for a migration to WebSphere traditional v9 container and provides a similar set of reports as for Liberty. In addition, Transformation Advisor provides assets to deploy the application into WAS traditional v9 container, for example the Python scripts to configure WAS traditional and to deploy the application, a Dockerfile to deploy the application into WAS traditional in a container as well as Pipeline resources.
+</div>
+</div>
+
 <ol>
 <li>
 <p>Go back to the Transformation Advisor Recommendation page, click the <strong>All Java applications</strong> (<strong>A</strong>) link.
