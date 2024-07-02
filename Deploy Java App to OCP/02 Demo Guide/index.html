@@ -390,9 +390,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+  <a href="#6-deploy-the-app-to-an-openshift-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Deploy to OpenShift environment
+      6 Deploy the app to an OpenShift environment
     </span>
   </a>
   
@@ -521,6 +521,90 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Transformation Advisor Demo
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Transformation Advisor Demo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Transformation%20Advisor/01%20Environment%20Setup%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo Environment Setup Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Transformation%20Advisor/02%20Demo%20Guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demo Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -603,9 +687,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-deploy-to-openshift-environment" class="md-nav__link">
+  <a href="#6-deploy-the-app-to-an-openshift-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Deploy to OpenShift environment
+      6 Deploy the app to an OpenShift environment
     </span>
   </a>
   
@@ -861,7 +945,7 @@
 <p>Now you have tested and verified that the app is running on Liberty container. What you will do next is to deploy the app in Liberty container to OCP.</p>
 </li>
 </ol>
-<h3 id="6-deploy-to-openshift-environment">6    Deploy to OpenShift environment</h3>
+<h3 id="6-deploy-the-app-to-an-openshift-environment">6    Deploy the app to an OpenShift environment</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Talking Points
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>In the last section, I have built the Mod Resorts app on Liberty container image and tested it.
@@ -889,58 +973,58 @@
 <p>The local Liberty container is now stopped.</p>
 </li>
 <li>
-<p>Log in to the OCP cluster with command:</p>
+<p>Log in to the OCP cluster with the following command:</p>
 <div class="highlight"><pre><span></span><code>oc login -u ocadmin -p ibmrhocp
 </code></pre></div>
 <p><img alt="" src="../_attachments/image056.png"></p>
 </li>
 <li>
-<p>Create a new project called resorts for the Mod Resorts app with command:</p>
+<p>Create a new project called resorts for the Mod Resorts app with the following command:</p>
 <div class="highlight"><pre><span></span><code>oc new-project resorts
 </code></pre></div>
 <p><img alt="" src="../_attachments/image057.png"></p>
 </li>
 <li>
-<p>Log in to the OCP image registry with command:</p>
+<p>Log in to the OCP image registry by using the following command:</p>
 <div class="highlight"><pre><span></span><code>docker login -u $(oc whoami) -p $(oc whoami -t) default-route-openshift-image-registry.apps.ocp.ibm.edu
 </code></pre></div>
 <p><img alt="" src="../_attachments/image058.png"></p>
 </li>
 <li>
-<p>Now push the app image to the OCP image registry with command:</p>
+<p>Now push the app image to the OCP image registry by using the following command:</p>
 <div class="highlight"><pre><span></span><code>docker push default-route-openshift-image-registry.apps.ocp.ibm.edu/resorts/modresorts:23009
 </code></pre></div>
 <p><img alt="" src="../_attachments/image059.png"></p>
-<p><strong>Note</strong>: It might take a few minutes to upload the image to the registry.</p>
+<p><strong>Note</strong>: It can take a few minutes to upload the image to the registry.</p>
 </li>
 <li>
-<p>After the image is uploaded to the OCP image registry, you can verify it with command:</p>
+<p>After the image is uploaded to the OCP image registry, use the following command to verify it:</p>
 <div class="highlight"><pre><span></span><code>oc get is
 </code></pre></div>
 <p><img alt="" src="../_attachments/image060.png"> </p>
 </li>
 <li>
-<p>You can also verify it from the OCP web console.</p>
+<p>Use the OCP web console to verify the image in the OCP image registry.</p>
 <p>a.  Access the OCP web console by clicking the <strong>OpenShift Console</strong> (<strong>A</strong>) bookmark in the web browser.</p>
 <p><img alt="" src="../_attachments/image061.png"> </p>
 <p>b.  Accept the default Username/Password and click <strong>Log in</strong> (<strong>A</strong>).</p>
 <p><img alt="" src="../_attachments/image062.png"></p>
 <p>After logged in, the OCP web console Home page is displayed.</p>
 <p><img alt="" src="../_attachments/image063.png"> </p>
-<p>c.  Click <strong>Builds</strong> (<strong>A</strong>), select <strong>ImageStreams</strong> (<strong>B</strong>) and select <strong>resorts project</strong> (<strong>C</strong>), you can see that the app image is listed.</p>
+<p>c.  Click <strong>Builds</strong> (<strong>A</strong>), select <strong>ImageStreams</strong> (<strong>B</strong>) and select <strong>resorts project</strong> (<strong>C</strong>), the app image is shown in the ImageStreams list.</p>
 <p><img alt="" src="../_attachments/image064.png">    </p>
-<p>d.  Click the <strong>app image link</strong> (<strong>A</strong>) to view its details.</p>
+<p>d.  Click the <strong>modresorts</strong> (<strong>A</strong>) to view its details.</p>
 <p><img alt="" src="../_attachments/image065.png"> </p>
 <p>The app image detail page is displayed.</p>
 <p><img alt="" src="../_attachments/image066.png"> </p>
 <p>Now you have verified that the app image is uploaded, you are ready to deploy the app to OCP using the YAML artifacts generated by Transformation Advisor.</p>
 </li>
 <li>
-<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Pods</strong> (<strong>B</strong>), you can see that currently you do not have any app pods running.</p>
+<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Pods</strong> (<strong>B</strong>), you can see that currently there is no any app pod running.</p>
 <p><img alt="" src="../_attachments/image067.png"></p>
 </li>
 <li>
-<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Deployment</strong> (<strong>B</strong>), you can see that currently you do not have any app deployment yet.</p>
+<p>From the OCP web console, click <strong>Workloads</strong> (<strong>A</strong>) and click <strong>Deployment</strong> (<strong>B</strong>), you can see that currently there is not any app deployment yet.</p>
 <p><img alt="" src="../_attachments/image068.png"></p>
 </li>
 <li>
