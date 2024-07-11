@@ -932,7 +932,7 @@ After the image is created and verified, it is ready to be deployed to OCP in th
 </code></pre></div>
 <p>The Docker image is built.</p>
 <p><img alt="" src="../_attachments/image049.png"> </p>
-<p><strong>Note</strong>: It can take some time to build the Docker for the  first time, because the artifact must all be downloaded to the demo VM. Each subsequent build will be quicker as only the updated artifacts must be downloaded.</p>
+<p><strong>Note</strong>: It can take some time to build the Docker for the  first time, because the artifacts must all be downloaded to the demo VM. Each subsequent build will be quicker as only the updated artifacts must be downloaded.</p>
 </li>
 <li>
 <p>To verify the Docker image, run the following command:</p>
@@ -1139,7 +1139,7 @@ Finally, I will show how to access the License tracing service report in OCP.</p
 <p>The report shows that Liberty Core is running in 8 pods with one CPU per pod, so in total you consume 8 CPUs and the total Cloud Pak for Application license consumed is 1.</p>
 </li>
 <li>
-<p>Let’s see that happened to the report if you remove the Mod Resorts app deployment from the OCP. To do it, run the following command from the terminal window to delete the deployment:</p>
+<p>Let’s see what happens to the report if you remove the Mod Resorts app deployment from the OCP. To do it, run the following command from the terminal window to delete the deployment:</p>
 <div class="highlight"><pre><span></span><code>oc delete -n resorts -k overlays/resorts_1.0
 </code></pre></div>
 <p><img alt="" src="../_attachments/image079.png"></p>
