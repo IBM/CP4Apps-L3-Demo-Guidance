@@ -465,18 +465,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-update-liberty-server-configuration-with-liberty-code-assistant" class="md-nav__link">
+  <a href="#5-update-the-liberty-server-configuration-with-the-liberty-code-assistant" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Update Liberty server configuration with Liberty Code Assistant
+      5 Update the Liberty server configuration with the Liberty Code Assistant
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-modify-application-code-with-liberty-code-assistant" class="md-nav__link">
+  <a href="#6-modify-the-application-code-with-the-liberty-code-assistant" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Modify application code with Liberty Code Assistant
+      6 Modify the application code with the Liberty Code Assistant
     </span>
   </a>
   
@@ -678,18 +678,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-update-liberty-server-configuration-with-liberty-code-assistant" class="md-nav__link">
+  <a href="#5-update-the-liberty-server-configuration-with-the-liberty-code-assistant" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Update Liberty server configuration with Liberty Code Assistant
+      5 Update the Liberty server configuration with the Liberty Code Assistant
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-modify-application-code-with-liberty-code-assistant" class="md-nav__link">
+  <a href="#6-modify-the-application-code-with-the-liberty-code-assistant" class="md-nav__link">
     <span class="md-ellipsis">
-      6 Modify application code with Liberty Code Assistant
+      6 Modify the application code with the Liberty Code Assistant
     </span>
   </a>
   
@@ -737,27 +737,22 @@
 <h2 id="hands-on-demo-guide">Hands-on demo guide</h2>
 <h3 id="1-introduction">1   Introduction</h3>
 <p>In this demo, you will show how developers can use Open Liberty in dev mode for achieving an efficient iterative develop, test, and debug cycle when developing Java based applications / microservices. Liberty dev mode works with WebSphere Liberty.  </p>
-<p>At the end of this demo, you should be able to showcase how to: 
-* use Liberty dev mode with an Integrated Development Environment (IDE) 
-* use Liberty Code Assistant to change configurations of a Liberty server
-* use Liberty Code Assistant to update Java application code
-* run integrated unit tests from Liberty dev mode</p>
+<p>At the end of this demo, you should be able to showcase how to: </p>
+<ul>
+<li>use Liberty dev mode with an Integrated Development Environment (IDE) </li>
+<li>use Liberty Code Assistant to change configurations of a Liberty server</li>
+<li>use Liberty Code Assistant to update Java application code</li>
+<li>run integrated unit tests from Liberty dev mode</li>
+</ul>
 <p><strong>Open Liberty</strong> is an application server designed for the cloud. It’s small, lightweight, and designed with modern cloud-native application development in mind. </p>
 <p>Open Liberty supports the full MicroProfile and Jakarta EE APIs and is composable, meaning that you can use only the features that you need, keeping the server lightweight, which is great for microservices. It also deploys to every major cloud platform, including Docker and Kubernetes.</p>
 <p><strong>Maven</strong> is an automation build tool that provides an efficient way to develop Java applications. </p>
 <p>Liberty <strong>development mode</strong>, or <strong>dev mode</strong>, allows developers to develop applications with any text editor or IDE by providing hot reload and deployment, on-demand testing, and debugger support. Liberty dev mode is enabled through Maven and Gradle projects. </p>
 <p>With Liberty <strong>dev mode</strong>, the application code is automatically compiled and deployed to the running server, making it easy to iterate on the code changes. </p>
-<p>Developers can run tests on-demand or even automatically so that you can get immediate feedback on their changes. They can also attach a debugger at any time to debug their running application.</p>
+<p>Developers can run tests on-demand or even automatically so that they can get immediate feedback on their changes. They can also attach a debugger at any time to debug their running application.</p>
 <p><img alt="" src="../_attachments/image020.png"></p>
 <p><strong>Visual Studio Code</strong>  (<strong>VS Code</strong>) is a code editor redefined and optimized for building and debugging modern web and cloud applications. VS Code is the IDE used in this Demo environment.</p>
-<p>This demo has the following steps:
-1.  Create a Liberty web application
-2.  Update the Liberty web application
-3.  Run Liberty dev mode using integrated development environment
-4.  Update Liberty server configuration with Liberty Code Assistant
-5.  Modify application code with Liberty Code Assistant
-6.  Conduct a unit test in Liberty dev mode
-7.  Summary</p>
+<p>This demo has the following steps: 1. Create a Liberty web application; 2. Update the Liberty web application; 3. Run Liberty dev mode using integrated development environment; 4. Update Liberty server configuration with Liberty Code Assistant; 5. Modify application code with Liberty Code Assistant; 6. Conduct a unit test in Liberty dev mode; and 7. Summary.</p>
 <h3 id="2-create-a-liberty-web-application">2   Create a Liberty web application</h3>
 <table style="background-color:GhostWhite">
 <tbody>
@@ -806,10 +801,10 @@ unzip ~/Downloads/whereami.zip -d ~/Student/whereami
 <p>The project is extracted to the <strong>~/Student/whereami</strong> directory.</p>
 </li>
 <li>
-<p>Inspect the whereami project artifacts and sour code files created by Open Liberty Starter Application using the command:</p>
+<p>Inspect the whereami project artifacts and source code files created by Open Liberty Starter Application using the command:</p>
 <div class="highlight"><pre><span></span><code>ls -l ~/Student/whereami
 </code></pre></div>
-<p>The whereami project artifacts and sour code files are listed.</p>
+<p>The whereami project artifacts and source code files are listed.</p>
 <p><img alt="" src="../_attachments/image027.png"></p>
 <p>As you can see, the Open Liberty Starter Application creates the project structure and basic artifacts needed for the project. If you want to do development in docker or containers, it has the Dockerfile ready. It also contains the pom file because you selected a maven project in the Starter Application. </p>
 </li>
@@ -826,14 +821,14 @@ unzip ~/Downloads/whereami.zip -d ~/Student/whereami
 </code></pre></div>
 <p><img alt="" src="../_attachments/image029.png"></p>
 <p>In the application source what you are seeing is that it is a very simple configuration for the liberty server which is basically pulling in the <strong>Jakarta E10</strong> and the <strong>MicroProfile 6</strong> features that you defined in that starter kit.</p>
-<p>Ideally you would list up a fewer of the sub features instead of those convenience features but that's a good way to get started.</p>
+<p>Ideally you would list up fewer of the sub features instead of those convenience features but that's a good way to get started.</p>
 </li>
 <li>
 <p>View the contents of the <strong>RestApplication.java</strong> file with the command:</p>
 <div class="highlight"><pre><span></span><code>cat ~/Student/whereami/src/main/java/com/demo/rest/RestApplication.java
 </code></pre></div>
 <p><img alt="" src="../_attachments/image030.png"></p>
-<p>As you can see that the Starter Application creates the starter set for a rest application that you can start developing with. The next step is to add application functions and business logic to the project.</p>
+<p>As you can see that Starter Application creates the starter set for a rest application that you can start developing with. The next step is to add application functions and business logic to the project.</p>
 </li>
 </ol>
 <h3 id="3-update-the-whereami-application">3   Update the whereami application</h3>
@@ -860,10 +855,10 @@ In this step, I am going add application functions and business logic to the whe
 </code></pre></div>
 </li>
 <li>
-<p>Inspect the updated whereami project artifacts and sour code files using commands:</p>
+<p>Inspect the updated whereami project artifacts and source code files using commands:</p>
 <div class="highlight"><pre><span></span><code>ls -l ~/Student/whereami
 </code></pre></div>
-<p>The updated whereami project artifacts and sour code files are listed.</p>
+<p>The updated whereami project artifacts and source code files are listed.</p>
 <p><img alt="" src="../_attachments/image031.png"></p>
 </li>
 <li>
@@ -875,13 +870,13 @@ code .
 <p>The VS Code UI is opened.</p>
 </li>
 <li>
-<p>Click <strong>Yes, I trust the authors ** (</strong>A**) to continue.</p>
+<p>Click <strong>Yes, I trust the authors</strong> (<strong>A</strong>) to continue.</p>
 <p><img alt="" src="../_attachments/image032.png"></p>
 <p>If you see during the lab one of the pop-ups below or any other pop-up asking to install something, close the pop-up without installation by clicking the <strong>X</strong> (<strong>A</strong>). </p>
 <p><img alt="" src="../_attachments/image033.png"></p>
 <p>When the project is loaded, you can see that you added the <strong>WhereAmI.java</strong> file as well as a unit test in the project.</p>
 <p><img alt="" src="../_attachments/image034.png"></p>
-<p>You also configured the Liberty server with all features needed for the application.</p>
+<p>You also configured the Liberty server with all the features needed for the application.</p>
 </li>
 </ol>
 <h3 id="4-start-liberty-dev-mod">4   Start Liberty Dev Mod</h3>
@@ -898,7 +893,7 @@ My code is automatically compiled and deployed to my running server, making it e
 <p>
 I can run tests on demand or even automatically so that I can get immediate feedback on my changes. I can also attach a debugger at any time to debug my running application.</p>
 <p>
-I can use the capabilities of Liberty dev mode inside and outside of an IDE. This provides with me the flexibility of choice. In a terminal window, I could use Liberty in dev mode with maven using the command mvn liberty:dev or mvn liberty:devc if I want to develop in a container.</p>
+I can use the capabilities of Liberty dev mode inside and outside of an IDE. This provides with me the flexibility of choice. In a terminal window, I can use Liberty in dev mode with maven using the command mvn liberty:dev or mvn liberty:devc if I want to develop in a container.</p>
 <p>
 In the demo environment, the Liberty tools plugin has been installed into VS Code. Therefore I will use the integrated Liberty dashboard instead. </p>
 <p>
@@ -909,9 +904,9 @@ In the VS Code environment, I will right-click project under LIBERTY DASHBOARD a
 
 <ol>
 <li>
-<p>To start Liberty in Dev Mode right-click <strong>whereami</strong> (<strong>A</strong>)under <strong>LIBERTY DASHBOARD</strong> and select <strong>Start</strong> (<strong>B</strong>). </p>
+<p>To start Liberty in Dev Mode right-click <strong>whereami</strong> (<strong>A</strong>) under <strong>LIBERTY DASHBOARD</strong> and select <strong>Start</strong> (<strong>B</strong>). </p>
 <p><img alt="" src="../_attachments/image035.png"></p>
-<p>In a few seconds, the Liberty server will be up and running, and you can see that the whereami application is ready.</p>
+<p>In a few seconds, the Liberty server will be up and running, and you can see that the <strong>whereami</strong> application is ready.</p>
 <p><img alt="" src="../_attachments/image036.png"></p>
 </li>
 <li>
@@ -921,7 +916,7 @@ In the VS Code environment, I will right-click project under LIBERTY DASHBOARD a
 <p>It lists the information about Liberty version used, the host name, scheme, context path and port.</p>
 </li>
 </ol>
-<h3 id="5-update-liberty-server-configuration-with-liberty-code-assistant">5   Update Liberty server configuration with Liberty Code Assistant</h3>
+<h3 id="5-update-the-liberty-server-configuration-with-the-liberty-code-assistant">5   Update the Liberty server configuration with the Liberty Code Assistant</h3>
 <table style="background-color:GhostWhite">
 <tbody>
 <tr>
@@ -931,9 +926,9 @@ In the VS Code environment, I will right-click project under LIBERTY DASHBOARD a
 
 Now I am going to make changes to the Liberty server configuration and enable the server https port and I am going to use Liberty code assistant to speed up the server configuration process.</p>
 <p>
-In order to active the https port of the Liberty server, I need to add the transport security feature to the Liberty server and I can do it with Liberty code assistant.</p>
+In order to activate the https port of the Liberty server, I need to add the transport security feature to the Liberty server and I can do it with Liberty code assistant.</p>
 <p>
-I will demonstrate that I can update Liberty server configuration using Liberty code assistant and activate the https protocol without stopping or restarting the Liberty server.</p>
+I will demonstrate that I can update the Liberty server configuration using the Liberty code assistant and activate the https protocol without stopping or restarting the Liberty server.</p>
 </td></tr></tbody></table>
 
 <ol>
@@ -947,7 +942,7 @@ I will demonstrate that I can update Liberty server configuration using Liberty 
 <p><img alt="" src="../_attachments/image039.png"></p>
 </li>
 <li>
-<p>Back to VS Code, add a new line after <strong><feature>servlet-6.0</feature></strong> (<strong>A</strong>) in the <strong>server.xml</strong> file, and activate the Liberty code assistant by pressing <strong>CTRL+SPACE</strong>, the code assistance window is shown.</p>
+<p>Back to VS Code, add a new line after <strong><feature>servlet-6.0</feature></strong> (<strong>A</strong>) in the <strong>server.xml</strong> file, and activate the Liberty code assistant by pressing <strong>CTRL+SPACE</strong>, the code assistant window is shown.</p>
 <p><img alt="" src="../_attachments/image040.png"></p>
 </li>
 <li>
@@ -959,17 +954,17 @@ I will demonstrate that I can update Liberty server configuration using Liberty 
 <li>
 <p>Type <strong>tr</strong> (<strong>A</strong>) in the feature field, the code assistant will offer the feature names containing the word tr.  Select the <strong>transportSecurity-1.0</strong> (<strong>B</strong>) to add the feature.</p>
 <p><img alt="" src="../_attachments/image043.png"></p>
-<p>As you can see that in Liberty Dev Mod, once the new feature is added, the server configuration is dynamically updated. Liberty code assistant automatically detects that the <strong>transportSecurity-1.0</strong> feature requires the <strong>ssl-1.0</strong> feature, so it adds the <strong>ssl-1.0</strong> feature to the Liberty server configuration as well. </p>
+<p>You can see that in Liberty Dev Mod, after the new feature is added, the server configuration is dynamically updated. Liberty code assistant automatically detects that the <strong>transportSecurity-1.0</strong> feature requires the <strong>ssl-1.0</strong> feature, so it adds the <strong>ssl-1.0</strong> feature to the Liberty server configuration as well. </p>
 <p><img alt="" src="../_attachments/image044.png"></p>
 </li>
 <li>
 <p>Now the https port is activated, if you try again to access the application from the browser window using the https port as: https://localhost:9443/whereami/ and accept the warning messages, you will get the application page.</p>
 <p><img alt="" src="../_attachments/image045.png"></p>
 <p>You can see now the protocol scheme is https and the port is 9443 which means that the https protocol is activated.</p>
-<p>This demonstrates that using Liberty code assistance you can modify Liberty server configuration without restart the server.</p>
+<p>This demonstrates that using Liberty code assistant you can modify Liberty server configuration without restart the server.</p>
 </li>
 </ol>
-<h3 id="6-modify-application-code-with-liberty-code-assistant">6   Modify application code with Liberty Code Assistant</h3>
+<h3 id="6-modify-the-application-code-with-the-liberty-code-assistant">6   Modify the application code with the Liberty Code Assistant</h3>
 <table style="background-color:GhostWhite">
 <tbody>
 <tr>
@@ -977,9 +972,9 @@ I will demonstrate that I can update Liberty server configuration using Liberty 
 <td><p><strong>Talking Points</strong></p>
 <p>
 
-In the previous section, I shown how to use Liberty code assistance to update the Liberty server configuration. </p>
+In the previous section, I shown how to use the Liberty code assistant to update the Liberty server configuration. </p>
 <p>
-Now I am going to use Liberty code assistant to make quick modifications to the application code. I will make code modifications to change the color of the text showing on the application page for different network protocols. I will have the red color for http protocol and the green color for https protocol. I will show how easy it is to make change the application code with the help of Liberty Code Assistant in Liberty Dev Mod.</p>
+Now I am going to use the Liberty code assistant to make quick modifications to the application code. I will make code modifications to change the color of the text showing on the application page for different network protocols. I will have the red color for the http protocol and the green color for the https protocol. I will show how easy it is to make change the application code with the help of the Liberty Code Assistant in Liberty Dev Mod.</p>
 </td></tr></tbody></table>
 
 <ol>
@@ -1024,7 +1019,7 @@ Now I am going to use Liberty code assistant to make quick modifications to the 
 <p>To verify the code changes, you can access the application page in the browser window with both http and https ports, and you can see the changes you made to the application.</p>
 <p><img alt="" src="../_attachments/image054.png">
 <img alt="" src="../_attachments/image055.png"></p>
-<p>As you can see that when you made changes to your code, the changes were automatically saved and Liberty server adopted these new changes dynamically without re-starting. So as a developer, you can quick change, test and verify my application code.</p>
+<p>You can see that when you made changes to your code, the changes were automatically saved and Liberty server adopted these new changes dynamically without re-starting. So as a developer, you can quick change, test and verify your application code.</p>
 </li>
 </ol>
 <h3 id="7-conduct-a-unit-test-in-liberty-dev-mode">7   Conduct a unit test in Liberty dev mode</h3>
@@ -1035,7 +1030,7 @@ Now I am going to use Liberty code assistant to make quick modifications to the 
 <td><p><strong>Talking Points</strong></p>
 <p>
 
-With Liberty Dev Mod, it is easy to conduct a unit test in the IDE.  Within the IDE, I can run the unit test and integration test by right-clicking project under LIBERTY DEV DASHBOARD and select run test.  This will active the test run and show the test results in the VS Code terminal window.  Another way to activate the unit test is to press the Enter key in the VS Code terminal window.</p>
+With Liberty Dev Mod, it is easy to conduct a unit test in the IDE.  Within the IDE, I can run the unit test and integration test by right-clicking project under LIBERTY DEV DASHBOARD and selecting run test.  This will active the test run and show the test results in the VS Code terminal window.  Another way to activate the unit test is to press the Enter key in the VS Code terminal window.</p>
 <p>
 In this section I will show how to do a unit test. The test is designed to check if the title of the application is in capital letters or not.  It will be successful if the title of the application is in capital letters, otherwise it will fail.</p>
 <p>
@@ -1045,16 +1040,16 @@ By default, the title of the application is not in all capital letters, so my un
 
 <p>As you know from the previous section, the title of the application, Where Am I Running?,  is not all in capital letters as shown below:</p>
 <p><img alt="" src="../_attachments/image054.png"></p>
-<p>So your unite test will not going to be successful as expected.</p>
+<p>So your unit test will not going to be successful as expected.</p>
 <ol>
 <li>
 <p>From the VS Code environment, go to the <strong>terminal window</strong> and press <strong>Enter</strong> (<strong>A</strong>).</p>
 <p><img alt="" src="../_attachments/image056.png"></p>
-<p>This will activate the unit test and integration test. You will see that the tests will fail with the message: FAIL! ---&gt; The header is in ‘lower case’!.</p>
+<p>This will activate the unit test and integration test. You will see that the test will fail with the message: FAIL! ---&gt; The header is in ‘lower case’!.</p>
 <p><img alt="" src="../_attachments/image057.png"></p>
 </li>
 <li>
-<p>To fix the error, you need to update your code. Go back to WhereAmI.java file in VS Code, <strong>scroll down</strong> (<strong>A</strong>) and go to the <strong>line 64</strong> (<strong>B</strong>).</p>
+<p>To fix the error, you need to update your code. Go back to the <strong>WhereAmI.java</strong> file in VS Code, <strong>scroll down</strong> (<strong>A</strong>) and go to <strong>line 64</strong> (<strong>B</strong>).</p>
 <p><img alt="" src="../_attachments/image058.png"></p>
 </li>
 <li>
@@ -1074,9 +1069,9 @@ By default, the title of the application is not in all capital letters, so my un
 <p><img alt="" src="../_attachments/image062.png"></p>
 </li>
 <li>
-<p>Now go back to run your unite test again from the VS Code terminal window by pressing <strong>Enter</strong> (<strong>A</strong>).</p>
+<p>Now go back to run your unit test again from the VS Code terminal window by pressing <strong>Enter</strong> (<strong>A</strong>).</p>
 <p><img alt="" src="../_attachments/image063.png"></p>
-<p>You will see that the unit test and integration test are successful with the message: PASS ! ---&gt; The head has been converted to UPPER CASE!.</p>
+<p>You will see that the unit test and integration test are successful with the message: PASS ! ---&gt; The header has been converted to UPPER CASE!.</p>
 <p><img alt="" src="../_attachments/image064.png"></p>
 </li>
 <li>
@@ -1086,7 +1081,7 @@ By default, the title of the application is not in all capital letters, so my un
 </li>
 </ol>
 <h3 id="8-summary">8   Summary</h3>
-<p>In this demo, you learned how developers can use Liberty in dev mode for achieving efficient iterative develop, test, debug cycle when developing Java based applications / microservices. As you explored the fast and efficient inner-loop development experience using the Liberty dev mode and VS Code IDE, your code was automatically compiled and deployed to the running server, making it easy to iterate on your changes. </p></div>
+<p>In this demo, you learned how developers can use Liberty in dev mode to achieve efficient iterative develop, test, and debug cycle when developing Java based applications / microservices. As you explored the fast and efficient inner-loop development experience using the Liberty dev mode and VS Code IDE, your code was automatically compiled and deployed to the running server, making it easy to iterate your changes. </p></div>
 
 
 
