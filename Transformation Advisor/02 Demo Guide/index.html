@@ -592,9 +592,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#10-explain-the-benefits-of-transformation-advisor-to-containerize-based-traditional-was" class="md-nav__link">
+  <a href="#10-explain-the-benefits-of-transformation-advisor-to-containerize-traditional-was" class="md-nav__link">
     <span class="md-ellipsis">
-      10 Explain the benefits of Transformation Advisor to containerize based traditional WAS
+      10 Explain the benefits of Transformation Advisor to containerize traditional WAS
     </span>
   </a>
   
@@ -748,9 +748,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#10-explain-the-benefits-of-transformation-advisor-to-containerize-based-traditional-was" class="md-nav__link">
+  <a href="#10-explain-the-benefits-of-transformation-advisor-to-containerize-traditional-was" class="md-nav__link">
     <span class="md-ellipsis">
-      10 Explain the benefits of Transformation Advisor to containerize based traditional WAS
+      10 Explain the benefits of Transformation Advisor to containerize traditional WAS
     </span>
   </a>
   
@@ -789,22 +789,16 @@
 <h2 id="hands-on-demo-guide">Hands-on demo guide</h2>
 <h3 id="1-introduction">1   Introduction</h3>
 <p>This demo shows the business value of IBM Cloud Transformation Advisor (Transformation Advisor), an application modernization tool included in IBM Cloud Pak for Applications to help clients quickly evaluate on-premises Java EE applications for deployment to the cloud. </p>
-<p>Transformation Advisor can</p>
+<p>Transformation Advisor can:</p>
 <ul>
-<li>identify the Java EE programming models in the app.</li>
-<li>determine the complexity of apps by listing a high-level inventory of the content and structure of each app.</li>
+<li>identify the Java EE programming models in the app</li>
+<li>determine the complexity of apps by listing a high-level inventory of the content and structure of each app</li>
 <li>highlight Java EE programming model and WebSphere API differences between the WebSphere profile types</li>
 <li>show any Java EE specification implementation differences that might affect the app</li>
 </ul>
 <p>Additionally, Transformation Advisor provides a recommendation for the right-fit IBM WebSphere Application Server edition and offers advice, best practices and potential solutions to assess the ease of moving applications to Liberty or newer versions of WebSphere traditional.</p>
-<p>Transformation Advisor accelerates application migrating to cloud process, minimize errors and risks and reduce time to market.</p>
-<p>This demo has the following steps:
-1.  Create Transformation Advisor Workspace
-2.  Download the Data Collector
-3.  Review the command to run the Data Collector
-4.  Upload the Data Collector results
-5.  Analyze the recommendations
-6.  Summary</p>
+<p>Transformation Advisor accelerates application migrating to cloud processes, minimizes errors and risks and reduces time to market.</p>
+<p>This demo has the following steps: 1. Create Transformation Advisor Workspace; 2. Download the Data Collector; 3. Review the command to run the Data Collector; 4. Upload the Data Collector results; 5. Analyze the recommendations; and 6. Summary.</p>
 <h3 id="2-access-transformation-advisor">2   Access Transformation Advisor</h3>
 <table style="background-color:GhostWhite">
 <tbody>
@@ -812,7 +806,7 @@
 
 <td><p><strong>Talking Points</strong></p>
 <p>
-In the demo scenario, I am going to use Transformation Advisor to evaluate my migration effort in which I want to migrate our Customer Order Services application from traditional WebSphere V855 to the cloud-ready new runtime with minimal code changes.
+In the demo scenario, I am going to use Transformation Advisor to evaluate my migration effort in which I want to migrate our Customer Order Services application from traditional WebSphere v8.5.5 to the cloud-ready new runtime with minimal code changes.
 To use the Transformation Advisor (TA), I need to create a Workspace first. </p>
 <p>
 A Workspace is a designated area that houses the migration recommendations provided by Transformation Advisor against our application server environment. We can name and organize these however we want, whether it is by business application, location or teams. </p>
@@ -824,7 +818,7 @@ In the Transformation Advisor home page, I use Create new button to create a new
 
 <ol>
 <li>
-<p>If the Transformation Advisor is not started yet, start it by running the following scommands in a terminal window Otherwise skip this step.</p>
+<p>If the Transformation Advisor is not started yet, start it by running the following commands in a terminal window Otherwise skip this step.</p>
 <p>a. Launch Transformation Advisor using the following commands:</p>
 <div class="highlight"><pre><span></span><code>cd /home/ibmdemo/TA_LOCAL/transformationAdvisor/transformation-advisor-local-3.2.1
 
@@ -837,7 +831,7 @@ In the Transformation Advisor home page, I use Create new button to create a new
 <p><strong>Note</strong>: you might see an error message when launching the Transformation Advisor, just ignore it, because it will not impact the start of Transformation Advisor.</p>
 </li>
 <li>
-<p>Access Transformation Advisor page from a web browser by clicking the <strong>TA Local</strong> (<strong>A</strong>) bookmark in the browser.</p>
+<p>Access the Transformation Advisor page from a web browser by clicking the <strong>TA Local</strong> (<strong>A</strong>) bookmark in the browser.</p>
 <p><img alt="" src="../_attachments/image019.png"> </p>
 <p>The Transformation Advisor page is displayed.</p>
 <p><img alt="" src="../_attachments/image020.png"> </p>
@@ -849,7 +843,7 @@ In the Transformation Advisor home page, I use Create new button to create a new
 <li>
 <p>Type <strong>CustomerOrderServices</strong> (<strong>A</strong>) as the workspace name and click <strong>Create</strong> (<strong>B</strong>).</p>
 <p><img alt="" src="../_attachments/image022.png"> </p>
-<p>After the workspace created, the Transformation Advisor is ready to use as shown as the follows.</p>
+<p>After the workspace created, the Transformation Advisor is ready to use as shown.</p>
 <p><img alt="" src="../_attachments/image023.png"> </p>
 </li>
 </ol>
@@ -909,7 +903,7 @@ The Data Collector is now extracted to the /home/ibmdemo/Downloads/transformatio
 <td><p><strong>Talking Points</strong></p>
 <p>
 
-Now the Data Collector is installed. I can run the Data Collector against my application server. The Transformation Advisor Data Collector Download page provides detail information on how to run the tool. </p>
+After the Data Collector is installed. I can run the Data Collector against my application server. The Transformation Advisor Data Collector Download page provides detail information on how to run the tool. </p>
 <p>
 Transformation Advisor Data Collector can collect data from different application server runtimes, including WebSphere, WebLogic, JBoss, Tomcat and MQ.  </p>
 <p>
@@ -921,13 +915,13 @@ Transformation Advisor Data Collector can also narrow the analysis scope at diff
 <p>Go back to Transformation Advisor Data Collector Download page.</p>
 </li>
 <li>
-<p>Scroll down to the <strong>Run Tool</strong> section (<strong>A</strong>) and click the <strong>Domain</strong> dropdown menu (<strong>B</strong>) to view different application runtimes that the Transformation Advisor can analysis of.</p>
+<p>Scroll down to the <strong>Run Tool</strong> section (<strong>A</strong>) and click the <strong>Domain</strong> dropdown menu (<strong>B</strong>) to view different application runtimes that the Transformation Advisor can analyze.</p>
 <p><img alt="" src="../_attachments/image028.png"> </p>
 <p>The list of the application runtimes is displayed.</p>
 <p><img alt="" src="../_attachments/image029.png">  </p>
 </li>
 <li>
-<p>Click the App &amp; Configuration dropdown menu (<strong>A</strong>) to view different analysis scopes of the Transformation Advisor.</p>
+<p>Click the <strong>Apps &amp; Configuration</strong> dropdown menu (<strong>A</strong>) to view different analysis scopes of the Transformation Advisor.</p>
 <p><img alt="" src="../_attachments/image030.png"></p>
 </li>
 </ol>
@@ -939,12 +933,10 @@ Transformation Advisor Data Collector can also narrow the analysis scope at diff
 <td><p><strong>Talking Points</strong></p>
 <p>
 
-Transformation Advisor is updated on a regular base to include findings from the field. In addition, Liberty also gets more and more capabilities to ease the migration. Therefore, it is always good to use the latest Transformation Advisor collector create a new workspace. </p>
+Transformation Advisor is updated on a regular base to include findings from the field. In addition, Liberty also gets more and more capabilities to simplify the migration process. Therefore, it is always good to use the latest Transformation Advisor collector create a new workspace. </p>
 <p>
-But the execution of the collector can take some time to create the zip file. </p> 
-<p>
-In this demo, I have a pre-created Data Collector zip file, now I need to upload it to Transformation Advisor for analysis. To do it, I first launch the Transformation Advisor Upload utility to add the file. Next, I use the utility file explorer to navigate to the desktop folder /home/ibmdemo/openshift-workshop-was/labs/Openshift/TransformationAdvisor where the zip file is stored. Then I select the zip file and upload it to Transformation Advisor. After a few moments the upload of the data collector results will be completed. 
-Once the Data Collector Results have been uploaded to Transformation Advisor, a set of recommendations will be created and shown on the Recommendations page as shown in the screenshot below.</p>
+But since it might take a lot of time to create the zip file when the collector is executed, in this demo, I have a pre-created Data Collector zip file, now I need to upload it to Transformation Advisor for analysis. To do this, I first launch the Transformation Advisor Upload utility to add the file. Next, I use the utility file explorer to navigate to the desktop folder /home/ibmdemo/openshift-workshop-was/labs/Openshift/TransformationAdvisor where the zip file is stored. Then I select the zip file and upload it to Transformation Advisor. After a few moments the upload of the data collector results will be completed. 
+After the Data Collector results have been uploaded to Transformation Advisor, a set of recommendations will be created and shown on the Recommendations page as shown in the screenshot below.</p>
 </td></tr></tbody></table>
 
 <ol>
@@ -980,9 +972,9 @@ Once the Data Collector Results have been uploaded to Transformation Advisor, a 
 <p>
 
 On the Recommendations page, the target environment is set to Liberty Runtimes, which is the default target environment.
-The Recommendations page also shows the summary analysis results for all the apps in the AppSrv01 environment to be moved to a Liberty environment. </p>
+The Recommendations page also shows the summary analysis results for all the applications in the AppSrv01 environment to be moved to a Liberty environment. </p>
 <p>
-For each app, you can see these results:</p>
+For each application, you can see these results:</p>
 
  <ul>
   <li>Java Application Name</li>
@@ -993,7 +985,7 @@ For each app, you can see these results:</p>
   <li>Estimated development cost in days</li>
 </ul> 
 <p>
-For example, if we want to move the modresorts application to a Liberty runtime, the complexity level is Simple, which indicates that the application code does not need to be changed before it can be moved to Liberty. The estimated development effort is zero day because no code change is required.</p>
+For example, if we want to move the modresorts application to a Liberty runtime, the complexity level is Simple, which indicates that the application code does not need to be changed before it can be moved to Liberty. The estimated development effort is zero days because no code change is required.</p>
 <p>
 Transformation Advisor can provide recommendations for different targets at the same time. I will add Open Liberty as another migration target to demonstrate it. </p>
 </td></tr></tbody></table>
@@ -1064,17 +1056,17 @@ In this section, several recommendations are listed:</p>
 <p><img alt="" src="../_attachments/image041b.png"> </p>
 </li>
 <li>
-<p><strong>Scroll down</strong> (<strong>A</strong>) to the bottom of the analysis page and click the <strong>Technology Report</strong> (<strong>B</strong>) to open the Technology report in a new browser window and review it.</p>
+<p><strong>Scroll down</strong> (<strong>A</strong>) to the bottom of the analysis page and click the <strong>Technology report</strong> (<strong>B</strong>) to open the Technology report in a new browser window and review it.</p>
 <p><img alt="" src="../_attachments/image042.png"></p>
 <p>The Application Technology Evaluation Report is opened in a new browser window.</p>
 <p><img alt="" src="../_attachments/image043.png"></p>
 </li>
 <li>
-<p>Go back to the Transformation Advisor page, <strong>scroll down</strong> (<strong>A</strong>) to the bottom of the analysis page and click on the <strong>Inventory Report</strong> (<strong>A</strong>) link to open the Inventory report in a new browser window and review it.</p>
+<p>Go back to the Transformation Advisor page, <strong>scroll down</strong> (<strong>A</strong>) to the bottom of the analysis page and click on the <strong>Inventory report</strong> (<strong>A</strong>) link to open the Inventory report in a new browser window and review it.</p>
 <p><img alt="" src="../_attachments/image044.png"> </p>
 </li>
 <li>
-<p>Go back to the Transformation Advisor page, <strong>scroll down</strong> (<strong>A</strong>) to the bottom of the analysis page and lick on the <strong>Analysis Report</strong> (<strong>A</strong>) link to open the Analysis report in a new browser window and review it.</p>
+<p>Go back to the Transformation Advisor page, <strong>scroll down</strong> (<strong>A</strong>) to the bottom of the analysis page and lick on the <strong>Analysis report</strong> (<strong>A</strong>) link to open the Analysis report in a new browser window and review it.</p>
 <p><img alt="" src="../_attachments/image045.png"></p>
 </li>
 <li>
@@ -1098,10 +1090,10 @@ Let’s look at the analysis details for the Customer Order Services application
 <p>
 First, we want to review the analysis results in Complexity Rules section. As we can see, Transformation Advisor has determined that code changes may be required before this application will run on WebSphere Liberty. But if we move to the Issues details section, we can see that Transformation Advisor has detected only a critical technology issue with accessing the Apache Wink APIs. There are no issues regarding JPA, because WebSphere Liberty other than Open liberty also supports JPA 2.0 and therefore Open JPA. </p>
 <p>
-WebSphere Liberty and Open Liberty, but the Technology Report is different. Therefore, let’s take a look at the Analysis Report. </p>
+Next let’s take a look at the Analysis Report to see if there are anything potential issues, their severity and possible solutions. </p>
 <p>
 The report shows the results of the migration rules that were executed by the Data Collector and returned results. 
-Let’s go to the Severe Rules section and review the Show rule help details. The Rule Help section provides recommended solutions on how to fix the issue.</p>
+Let’s go to the Severe Rules section and review the Show rule help details. The Rule Help section provides recommended solutions on how to fix the issues.</p>
 <p>
 In this section, there is only one recommendation listed:</p>
  <ul>
@@ -1147,7 +1139,7 @@ In this section, there is only one recommendation listed:</p>
 <td><p><strong>Talking Points</strong></p>
 <p>
 
-Next to recommendations how to migrate the application, Transformation Advisor also provides assets to speed up the deployment by providing a migration plan. This includes the generation of the Liberty configuration file server.xml to deploy the application to Liberty, a pom file to build the application, a Docker file to containerize the application and an Application Custom Resource to deploy the application to Kubernetes. </p>
+Next to recommendations on how to migrate the application, Transformation Advisor also provides assets to speed up the deployment by providing a migration plan. This includes the generation of the Liberty configuration file server.xml to deploy the application to Liberty, a pom file to build the application, a Docker file to containerize the application and an Application Custom Resource to deploy the application to Kubernetes. </p>
 <p>
 Let’s start with the Liberty configuration. </p>
 <p>
@@ -1191,7 +1183,7 @@ As Transformation Advisor does not collect any passwords, the variables for the 
 <p>Close the text editor.</p>
 </li>
 </ol>
-<h3 id="10-explain-the-benefits-of-transformation-advisor-to-containerize-based-traditional-was">10  Explain the benefits of Transformation Advisor to containerize based traditional WAS</h3>
+<h3 id="10-explain-the-benefits-of-transformation-advisor-to-containerize-traditional-was">10  Explain the benefits of Transformation Advisor to containerize traditional WAS</h3>
 <table style="background-color:GhostWhite">
 <tbody>
 <tr>
@@ -1199,7 +1191,7 @@ As Transformation Advisor does not collect any passwords, the variables for the 
 <td><p><strong>Talking Points</strong></p>
 <p>
 
-For the customerorderservice application, the migration to WebSphere Liberty seems to be quite easy. But there might be reasons why to stick with WebSphere traditional and just containerize the application. Transformation Advisor provides insight to assess the efforts for a migration to WebSphere traditional v9 container and provides a similar set of reports as for Liberty. In addition, Transformation Advisor provides assets to deploy the application into WAS traditional v9 container, for example the Python scripts to configure WAS traditional and to deploy the application, a Dockerfile to deploy the application into WAS traditional in a container as well as Pipeline resources.</p>
+For the customerorderservice application, the migration to WebSphere Liberty seems to be quite easy. But there might be reasons to stick with WebSphere traditional and just containerize the application. Transformation Advisor provides insights to assess the efforts for a migration to a WebSphere traditional v9 container and provides a similar set of reports as for Liberty. In addition, Transformation Advisor provides assets to deploy the application into a WAS traditional v9 container, for example the Python scripts to configure a WAS traditional and to deploy the application, a Dockerfile to deploy the application into a WAS traditional in a container as well as Pipeline resources.</p>
 </td></tr></tbody></table>
 
 <ol>
@@ -1234,7 +1226,7 @@ For the customerorderservice application, the migration to WebSphere Liberty see
 </ol>
 <h3 id="11-summary">11  Summary</h3>
 <p>In this demo, I showed how to evaluate the existing Java application using IBM Cloud Transformation Advisor. The intention of our traditional WebSphere V855 to Liberty scenario is to migrate the Customer Order Services application to the cloud-ready new runtime with minimal code changes. IBM Cloud Transformation Advisor was used to analyze the application for compatibility with traditional WebSphere and determined that only small changes to three classes would be required. It provided next to insight into the application and also several deployment assets.</p>
-<p>As the demo shown, Transformation Advisor can help to accelerate application migrating to cloud processes, minimize errors and risks and reduce time to market.</p></div>
+<p>As the demo shows, Transformation Advisor can help to accelerate application migration to cloud processes, to minimize errors and risks and to reduce time to market.</p></div>
 
 
 
